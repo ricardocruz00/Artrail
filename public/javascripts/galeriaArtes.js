@@ -11,7 +11,7 @@ async function loadArtes() {
                 method: "get",
                 dataType: "json"
             });
-            console.log(JSON.stringify(artes));
+            // console.log(JSON.stringify(artes));
             showArtes(artes);
         } catch (err) {
             console.log(err);
@@ -21,13 +21,15 @@ async function loadArtes() {
 }
 
 
+
 async function showArtes(artes) {
     let elemAside = document.getElementById("galeria");
     let html = "";
     for (let arte of artes) {
-            html += "<section class='arteMoldura' id = 'arte' ><h1>" + arte.nome + "</h1>" +
-                "<p> Localização: " + arte.latitude + ", " + arte.longitude +" </p>"  +
-                "<p> imagem: " + arte.imagem + " </p>"
+            html += "<section class='arteMoldura' id = 'arte' >"+
+            "<div class='imagemArte-zoom imagemArte-zoom-slow'> <img class='imagemArte' src=" + arte.imagem + "> </div>"+
+            "<section class='infoArte'> <h1>" + arte.nome + "</h1>" +
+            "<p> Localização: " + arte.latitude + ", " + arte.longitude +" </p> </section> </section>"
         }
     elemAside.innerHTML = html;
 }

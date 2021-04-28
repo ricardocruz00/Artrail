@@ -9,9 +9,43 @@ a {
 }
 
 h1 {
+  font-size: 18px;
   color: rgb(103 60 253);
 }
 
 p {
   color: rgb(103 60 253);
+}
+
+.imagemArte-zoom{
+  height: 200px;
+  display: block; margin-left: auto; margin-right: auto;
+  overflow: hidden;
+  border-radius: 6px;
+  border-bottom-left-radius:0px;
+  border-bottom-right-radius:0px;
+}
+
+.imagemArte-zoom-slow img{
+  transform-origin: 50% 50%;
+  transition: transform 5s, filter 2s ease-in-out;
+}
+
+.imagemArte-zoom-slow:hover img{
+  transform: scale(3);
+}
+
+.arteMoldura{
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  margin: 20px;
+  width: 300px;
+  border-radius: 6px;
+}
+
+.galeria{
+  display: flex;
+}
+
+.infoArte{
+  padding-left: 10px;
 }
