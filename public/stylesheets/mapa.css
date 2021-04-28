@@ -1,0 +1,26 @@
+body {
+  padding-top: 20px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: white;
+}
+
+a {
+  color: rgb(103 60 253);
+}
+
+h1 {
+  font-size: 18px;
+  color: rgb(103 60 253);
+}
+
+p {
+  color: rgb(103 60 253);
+}
+
+#mapid { 
+  height: 300px; 
+  /* width: 1250px; */
+  width: 100%;
+  z-index: 1;
+  position: fixed;
+}

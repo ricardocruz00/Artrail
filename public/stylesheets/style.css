@@ -1,5 +1,6 @@
 body {
-  padding: 50px;
+  padding-top: 20px;
+  padding-left: 20px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: white;
 }
@@ -18,7 +19,7 @@ p {
 }
 
 .imagemArte-zoom{
-  height: 200px;
+  height: 250px;
   display: block; margin-left: auto; margin-right: auto;
   overflow: hidden;
   border-radius: 6px;
