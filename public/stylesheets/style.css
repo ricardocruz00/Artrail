@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap');
+
 body {
   padding-top: 20px;
   padding-left: 20px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px;
   background-color: white;
+  font-family: 'Noto Sans JP', sans-serif;
 }
 
 a {
@@ -11,11 +14,12 @@ a {
 
 h1 {
   font-size: 18px;
-  color: rgb(103 60 253);
+  color: black;
+  padding:0px;
 }
 
 p {
-  color: rgb(103 60 253);
+  color: black;
 }
 
 .imagemArte-zoom{
@@ -29,7 +33,7 @@ p {
 
 .imagemArte-zoom-slow img{
   transform-origin: 50% 50%;
-  transition: transform 5s, filter 2s ease-in-out;
+  transition: transform 10s, filter 2s ease-in-out;
 }
 
 .imagemArte-zoom-slow:hover img{
@@ -41,6 +45,12 @@ p {
   margin: 20px;
   width: 300px;
   border-radius: 6px;
+  transition: transform 200ms;
+  cursor: pointer;
+}
+
+.arteMoldura:hover{
+  transform: translateY(-7px);
 }
 
 .galeria{
@@ -49,4 +59,6 @@ p {
 
 .infoArte{
   padding-left: 10px;
+  padding-top: 0px;
+  margin: 0px;
 }

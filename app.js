@@ -7,6 +7,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var artesRouter = require('./routes/artesRoutes');
+var sessoesRouter = require('./routes/sessoesRoutes');
 
 var app = express();
 
@@ -20,5 +21,6 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 app.use('/api/artes', artesRouter);
+app.use('/api/sessoes', sessoesRouter);
 
 module.exports = app;
