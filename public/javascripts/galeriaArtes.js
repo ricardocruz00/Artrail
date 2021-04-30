@@ -26,15 +26,17 @@ async function showArtes(artes) {
     let elemAside = document.getElementById("galeria");
     let html = "";
     for (let arte of artes) {
-            html += "<section class='arteMoldura' id = 'arte' onclick='showSessoes("+arte.arteID1+")' >"+
+            html += "<section class='arteMoldura' id = 'arte' onclick='showSessoes("+arte.arteID1+","+JSON.stringify(arte.nome_artista)+")' >"+
             "<div class='imagemArte-zoom imagemArte-zoom-slow'> <img class='imagemArte' src=" + arte.imagem + "> </div>"+
             "<section class='infoArte'> <h1>" + arte.nome + "</h1>" +
+            "<p>Artista: "+ arte.nome_artista +"</p>"+
             "<p> Localização: " + arte.latitude + ", " + arte.longitude +" </p> </section> </section>"
         }
     elemAside.innerHTML = html;
 }
 
-function showSessoes(arteID) {
+function showSessoes(arteID,nome_artista) {
     sessionStorage.setItem("arteID",arteID);
+    sessionStorage.setItem("nome_artista",nome_artista);
     window.location = "sessoes.html";
 }

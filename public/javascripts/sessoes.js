@@ -1,5 +1,6 @@
 window.onload = async function() {
     let arteID = sessionStorage.getItem("arteID");
+    let nome_artista = sessionStorage.getItem("nome_artista");
     
     let sessoes = await $.ajax({
         url: "/api/sessoes/"+arteID,
@@ -7,6 +8,12 @@ window.onload = async function() {
         dataType: "json"
     });
     console.log(sessoes);
+    console.log(JSON.stringify(nome_artista));
+
+    let nomeArtistaHTML = "";
+    nomeArtistaHTML += "<p>Artista: "+nome_artista+"</p>";
+    document.getElementById("artista").innerHTML = nomeArtistaHTML;
+
 
     let html = "";
     for(let sessao of sessoes) {
