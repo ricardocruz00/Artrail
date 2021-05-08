@@ -17,7 +17,7 @@ window.onload = async function() {
 
     let html = "";
     for(let sessao of sessoes) {
-        html+= "<section class='arteMoldura'id='arteMoldura'>"+
+        html+= "<section class='arteMoldura'id='arteMoldura' onclick='showSessao("+sessao.sessaoID1+")' >"+
         "<div class='imagemArte-zoom imagemArte-zoom-slow'> <img class='imagemArte' src=" + sessao.imagem + "> </div>"+
         "<section class='infoArte'>"+
         "<p>Descrição: "+sessao.descricao+"</p>"+
@@ -26,5 +26,11 @@ window.onload = async function() {
         "<p>Publicado por: "+sessao.nome_user+"</p> </section> </section>";
     }
     document.getElementById("lista").innerHTML = html;
+
+    
 }
 
+function showSessao(sessaoID) {
+        sessionStorage.setItem("sessaoID",sessaoID);
+        window.location = "sessaoFotos.html";
+    }
