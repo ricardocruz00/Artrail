@@ -1,0 +1,140 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+
+*{
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    position: relative;
+    margin: 0px;
+}
+
+h1{
+    font-size: 40px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+p{
+    font-size: 25px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+input[type=button] {
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    border-radius: 15px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-right: 40px;
+    padding-left: 40px;
+    font-size: 18px;
+    margin-bottom: 10px;
+    background-color: rgb(92, 41, 212);
+    text-align: center;
+    cursor: pointer;
+}
+
+#SLIDE_BG {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    backface-visibility: hidden;
+    animation: slide 12s linear infinite 0s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    background-image: url("../images/bg1.jpg");
+}
+
+@keyframes slide {
+    
+    16.6% {
+        background-image: url('../images/bg1.jpg');
+    }
+
+    33.2% {
+        background-image: url('../images/bg1.jpg');
+    }
+    
+    50% {
+        background-image: url('../images/bg2.jpg');
+    }
+
+    66.6% {
+        background-image: url('../images/bg2.jpg');
+    }
+
+    83.2% {
+        background-image: url('../images/bg33.jpg');
+    }
+
+    100% {
+        background-image: url('../images/bg33.jpg');
+    }
+
+}
+
+.container{
+    position: absolute;
+    width: 1350px;
+    height: 750px;
+    /* background-color: red; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    grid-template-columns:38% auto;
+    grid-template-rows: 100%;
+    grid-template-areas:  
+    'b f';
+}
+
+.blurredbg{
+    grid-area: b;
+    background-color: rgba(255, 255, 255, 0.096);  
+    backdrop-filter: blur(8px);
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.containerForm{
+    grid-area: f;
+    background-color: rgb(255, 255, 255); 
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+
+input[type=text], input[type=email], input[type=password] {
+    border: none;
+    border-bottom: 2px solid rgb(80, 80, 80);
+    width: 400px;
+    font-size: 25px;
+    
+}
+
+input[type=text]:hover, input[type=email]:hover, input[type=password]:hover {
+    outline: none;
+    border: none;
+    border-bottom: 2px solid rgb(47, 47, 47);
+}
+
+input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
+    outline: none;
+    border: none;
+    border-bottom: 2px solid rgb(92, 41, 212);
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    align-items:center;
+}

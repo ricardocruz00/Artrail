@@ -5,7 +5,7 @@ var sessionModel = require("../models/sessoesModel");
 /* GET all sessões */
 router.get('/:id', async function(req, res, next) {
   let idArte = req.params.id;  
-  let result = await sessionModel.getAll(idArte);
+  let result = await sessionModel.getSessoes(idArte);
     res.status(result.status).
        send(result.data);
 });
@@ -14,8 +14,8 @@ router.get('/:id', async function(req, res, next) {
 
 // /api/sessoes/info/2
 router.get('/info/:id', async function(req, res, next) {
-  let idArte = req.params.id;  
-  let result = await sessionModel.getOne(idArte);
+  let idSessao = req.params.id;  
+  let result = await sessionModel.getOne(idSessao);
     res.status(result.status).
        send(result.data);
 });
