@@ -8,6 +8,12 @@ window.onload = async function() {
     });
     console.log(sessao);
 
+    document.getElementById("sessao").innerHTML = "<p>Descrição: "+sessao.descricao+"</p>"+
+    "<p>Estado de Conservação: "+sessao.estado_conservacao+"</p>"+
+    "<p>"+sessao.timestamp+"</p>"+
+    "<p>Publicado por: "+sessao.nome_user+"</p>"
+
+
     let sessaoID2 = await sessionStorage.getItem("sessaoID");
       let fotos = await $.ajax({
         url: "/api/sessao/"+sessaoID2,
@@ -16,16 +22,14 @@ window.onload = async function() {
     });
     console.log(fotos);
 
-    document.getElementById("sessao").innerHTML = "<p>Descrição: "+sessao.descricao+"</p>"+
-    "<p>Estado de Conservação: "+sessao.estado_conservacao+"</p>"+
-    "<p>"+sessao.timestamp+"</p>"+
-    "<p>Publicado por: "+sessao.nome_user+"</p>"
-
-
     let elemAside = document.getElementById("fotos");
     let html = "";
     for (let foto of fotos) {
-            html +="<div> <img src=" + foto.imagem + "> </div>"
-        }
+            html +="<div class='fotos'> <img src=" + foto.imagem + "> </div>"
+          }
     elemAside.innerHTML = html;
+}
+
+const change = src => {
+  document.getElementById('main').src = src
 }
