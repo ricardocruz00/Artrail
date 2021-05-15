@@ -3,7 +3,7 @@
 <head>
   <title>Artrail</title>
   <meta charset="utf-8" />
-  <link rel="stylesheet" href="/stylesheets/registo.css">
+  <link rel="stylesheet" href="/stylesheets/login.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <!-- add icon link -->
@@ -17,27 +17,18 @@
   <section class="container">
     <section class="blurredbg"></section>
     <section class="containerForm">
-      <h1>Sign Up to Artrail</h1>
+      <h1>Sign In to Artrail</h1>
       
       <form class="form">
-        <input type="button" class="login" value="Already have an account? Log In" onClick="location.href='login.html'">
-        <section class="name">
-          <p>Name</p>
-          <input type="text" id="name" autocomplete="autocomplete_off_hack_xfr4!k">
-        </section>
         <section class="username">
           <p>Username</p>
           <input type="text" id="username" autocomplete="autocomplete_off_hack_xfr4!k">
-        </section>
-        <section class="email">
-          <p>E-Mail</p>
-          <input type="email" id="email" autocomplete="autocomplete_off_hack_xfr4!k">
         </section>
         <section class="pass">
           <p>Password</p>
           <input type="password" id="password">
         </section>
-        <input type="button" value="Registar" class="buttonRegistar" onclick="addUSer()">
+        <input type="button" value="Entrar" class="buttonLogin" onclick="checkLogin()">
       </form>
     </section>
   </section>

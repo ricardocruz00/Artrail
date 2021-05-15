@@ -23,6 +23,10 @@ async function loadArtes() {
 
 
 async function showArtes(artes) {
+    if (sessionStorage.getItem("userID") !== null) {
+        let nomeUser = document.getElementById("nomeUser");
+        nomeUser.innerHTML = "<a>" + sessionStorage.getItem("nome_user") + "</a>";
+    }
     let elemAside = document.getElementById("galeria");
     let html = "";
     for (let arte of artes) {
