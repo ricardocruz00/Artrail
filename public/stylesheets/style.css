@@ -22,31 +22,42 @@ p {
   color: black;
 }
 
+.imagemArte{
+  height: 350px;
+  width: 100%;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;}
+
 .imagemArte-zoom{
-  height: 250px;
-  display: block; margin-left: auto; margin-right: auto;
+  height: 350px;
+  display: block; 
+  margin-left: auto; margin-right: auto;
   overflow: hidden;
   border-radius: 6px;
   border-bottom-left-radius:0px;
   border-bottom-right-radius:0px;
 }
 
-.imagemArte-zoom-slow img{
+/* .imagemArte-zoom-slow img{
   transform-origin: 50% 50%;
   transition: transform 10s, filter 2s ease-in-out;
 }
 
 .imagemArte-zoom-slow:hover img{
   transform: scale(3);
-}
+} */
 
 .arteMoldura{
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   margin: 20px;
-  width: 300px;
+  width: 350px;
   border-radius: 6px;
   transition: transform 200ms;
   cursor: pointer;
+  position: relative;
 }
 
 .arteMoldura:hover{

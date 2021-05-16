@@ -25,7 +25,9 @@ module.exports.getOne = async function(idSessao) {
     try {
         let sql = "SELECT descricao, DATE_FORMAT(sessaoFotos.timestamp, '%d/%m/%Y às %H:%i') as timestamp, estado_conservacao, nome_user FROM sessaoFotos INNER JOIN user ON sessaoFotos.user_id = user.id INNER JOIN estadoConservacaoArte ON sessaoFotos.estadoArte_id = estadoConservacaoArte.id WHERE sessaoFotos.id = ?";
         let sessoes = await pool.query(sql,[idSessao]);
-        let sessao = sessoes[0]; // uma só sessão
+        let sqlImage = "SELECT imagem FROM fotografia INNER JOIN sessaoFotos ON fotografia.fotografiaInfo_id = sessaoFotos.id WHERE sessaoFotos.id = ?"
+        let fotos = await pool.query(sqlImage,[idSessao]); 
+        let sessao = {sessaoInfo: sessoes[0],fotos: fotos } ;
         
         return {status:200, data: sessao};
     } catch(err) {

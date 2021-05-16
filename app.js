@@ -8,7 +8,6 @@ var usersRouter = require('./routes/users');
 
 var artesRouter = require('./routes/artesRoutes');
 var sessoesRouter = require('./routes/sessoesRoutes');
-var sessaoRouter = require('./routes/sessaoRoutes');
 var utilizadorRouter = require('./routes/userRoutes');
 
 var app = express();
@@ -24,7 +23,6 @@ app.use('/users', usersRouter);
 
 app.use('/api/artes', artesRouter);
 app.use('/api/sessoes', sessoesRouter);
-app.use('/api/sessao', sessaoRouter);
 app.use('/api/users', utilizadorRouter);
 
 module.exports = app;
