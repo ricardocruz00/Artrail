@@ -137,3 +137,15 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
     padding-top: 0px;
     align-items:center;
 }
+
+.swal-button {
+    background-color: rgb(92, 41, 212);
+    }
+
+.swal-button:hover {
+    background-color: rgb(92, 41, 212);
+    }
+
+.swal-button:active {
+    background-color: rgb(92, 41, 212);
+    }

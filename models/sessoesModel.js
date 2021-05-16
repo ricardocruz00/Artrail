@@ -10,7 +10,7 @@ module.exports.getSessoes = async function (idArte) {
         "INNER JOIN arte_artista ON arte_artista.arte_id = arte.id "+ 
         "INNER JOIN artista ON artista.id = arte_artista.artista_id WHERE arte.id = ? AND "+
             "fotografia.id in (select max(fotografia.id) "+
-            "FROM arte sessaoFotos "+
+            "FROM sessaoFotos "+
             "INNER JOIN fotografia ON sessaoFotos.id = fotografia.fotografiaInfo_id "+
             "group by sessaoFotos.id )";
         let sessoes = await pool.query(sql,[idArte]);
