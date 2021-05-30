@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <title>Artrail</title>
   <link rel="stylesheet" href="/stylesheets/mapa.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
   <script src="javascripts/mapaArtes.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -36,13 +37,28 @@
 </head>
 
 <body>
+  <div id="bg"></div>
+  <ul>
+    <li><a class="active" href="index.html">Home</a></li>
+    <li><a href="#news">About Us</a></li>
+    <li><a href="mapa.html">Map</a></li>
+    <li><a href="#contact">Leaderboard</a></li>
+    <li><img class="logoNav" src="images/secondary.png"></li>
+    <li style="float: right" id="nomeUser"><a href="#perfil"></a></li>
+    <li style="float:right"><a href="registo.html">Sign Up</a></li>
+  </ul>
 
-    <mapa class="grid-mapa">
+    <section class='card'>
+
+      <info class="info">
+      </info>
+    
+      <mapa class="grid-mapa">
         <div class="map-flex" id="mapid"></div>
         <script src="javascripts/mapa.js"></script>
     </mapa>
 
-    <section class="error"></section>
+    </section>
 
 </body>
 

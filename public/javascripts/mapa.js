@@ -1,4 +1,4 @@
-var mymap = L.map('mapid').setView([38.727178, -9.156347], 14);
+var mymap = L.map('mapid').setView([38.727978, -9.157447], 13);
 
 var markersLayer = L.layerGroup();
 var routingLayer = L.layerGroup();

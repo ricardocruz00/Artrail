@@ -2,6 +2,7 @@ body {
   padding-top: 80px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: white;
+  background-image: url("../images/bg1.jpg");
 }
 
 a {
@@ -17,12 +18,22 @@ p {
   color: rgb(103 60 253);
 }
 
+.card{
+  margin: auto;
+  /* background-color: rgba(137, 43, 226, 0.555); */
+  height: 720px;
+  width: 1200px;
+  margin-top: 70px;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.096);  
+    backdrop-filter: blur(8px);
+}
+
 #mapid { 
-  height: 800px; 
+  height: 100%; 
   /* width: 1250px; */
-  width: 99%;
-  z-index: 1;
-  position: fixed;
+  width: 50%;
+  border-radius: 12px;
 }
 
 .markerInput{
@@ -33,14 +44,16 @@ p {
   background-color: #ffffff;
   cursor: pointer;
   border-radius: 5px;
+  color: #8f02b3;
+  font-weight: 500;
 }
 
 .markerInput:hover {
-  background-color: #FF5F00;
+  background-color: #8f02b3;
   color: white;
 }
 
 .markerInput:focus {
-   background-color: #FF5F00; 
+   background-color: #8f02b3; 
    color: white;
 }

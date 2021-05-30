@@ -12,13 +12,13 @@ body {
 }
 
 h1{
-    font-size: 40px;
+    font-size: 38px;
     text-align: center;
     padding-top: 20px;
 }
 
 p{
-    font-size: 25px;
+    font-size: 22px;
     text-align: center;
     padding-top: 20px;
 }
@@ -31,7 +31,7 @@ input[type=button] {
     padding-bottom: 12px;
     padding-right: 40px;
     padding-left: 40px;
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 10px;
     background-color: rgb(92, 41, 212);
     text-align: center;

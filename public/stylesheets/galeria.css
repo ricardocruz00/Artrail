@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap');
+
+.galeria {
+    margin-top: 130px;
+    display: block;
+    columns: 270px;
+    gap: 27px;
+    padding-left: 200px;
+    padding-right: 200px;
+    margin-bottom: 100px;
+}
+.galeria figure {
+    margin-bottom: 27px;
+    break-inside: avoid;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* body {
+    margin: 2rem calc(2vw + 2rem);
+} */
+
+img { 
+    width: 100%; 
+    display: block;
+    border-radius: 9px;
+}
+
+figure {
+    margin: 0;
+    cursor: pointer;
+}
+
+/* -- */
+
+.img__wrap {
+    position: relative;
+}
+  
+.img__description_layer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 9px;
+    background: rgba(0, 0, 0, 0.6);
+    color: rgb(255, 255, 255);
+    visibility: hidden;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* transition effect. not necessary */
+    transition: opacity .2s, visibility .2s;
+}
+  
+.img__wrap:hover .img__description_layer {
+    visibility: visible;
+    opacity: 1;
+}
+  
+.img__description {
+    transition: .2s;
+    transform: translateY(1em);
+    text-align: center;
+    font-size: 15px;
+}
+  
+.img__wrap:hover .img__description {
+    transform: translateY(0);
+}

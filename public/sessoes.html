@@ -4,6 +4,7 @@
   <title>Artrail</title>
   <meta charset="utf-8" />
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="/stylesheets/galeria.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <!-- add icon link -->
@@ -12,10 +13,16 @@
 </head>
 
 <body>
-  <h1>Artrail</h1>
-  <p>Welcome to Artrail</p>
-  <section id="nomeUser"></section>
-  <section id="artista"></section>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#news">About Us</a></li>
+    <li><a href="mapa.html">Map</a></li>
+    <li><a href="#contact">Leaderboard</a></li>
+    <li><img class="logoNav" src="images/secondary.png"></li>
+    <li style="float: right" id="nomeUser"><a href="#perfil"></a></li>
+    <li style="float:right"><a href="registo.html">Sign Up</a></li>
+  </ul>
+  <section class='artistaNome' id="artista"></section>
 
   <section class="galeria" id="lista"></section>
 </body>

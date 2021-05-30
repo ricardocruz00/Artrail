@@ -16,7 +16,7 @@ window.onload = async function() {
     let elemAside = document.getElementById("fotos");
     let htmlImage = "";
     for (let foto of sessao.fotos) {
-            htmlImage +="<div class='fotos'> <img src=" + foto.imagem + "> </div>"
+            htmlImage +="<div class='fotos'> <img src=" + foto.imagem + "> </div>";
         }
     elemAside.innerHTML = htmlImage;
 
