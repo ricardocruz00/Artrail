@@ -61,14 +61,10 @@ function artesMarkers(lat, long, nome, arteID) {
   var marker = markersLayer.addLayer(L.marker([lat, long]).bindPopup("<input type='button' class='markerInput' onclick='selecionarMarkerArte(" + arteID + ")' value='" + nome + "'>").addTo(mymap));
 }
 
-function artesMarkersInfo(lat, long) {
-  var marker = markersLayer.addLayer(L.marker([lat, long]).addTo(mymap));
-}
-
-// function selecionarMarkerArte(arteID) {
-//   sessionStorage.setItem("arteID", arteID);
-//   window.location = ".html";
-//}
+//  function selecionarMarkerArte(arteID, nome_artista) {
+//    sessionStorage.setItem("arteID", arteID);
+//    sessionStorage.setItem("nome_artista",nome_artista);
+// }
 
 function getArteNome(nomeArte) {
   sessionStorage.setItem("arteNome", nomeArte);

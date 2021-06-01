@@ -1,0 +1,85 @@
+<html>
+
+<head>
+  <title>Artrail</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="/stylesheets/aboutus.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- add icon link -->
+    <link rel="icon" href="images/logo.png" type="image/x-icon">
+</head>
+
+<body>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a class="active" href="aboutus.html">About Us</a></li>
+    <li><a href="mapa.html">Map</a></li>
+    <li><a href="#contact">Leaderboard</a></li>
+    <li><img class="logoNav" src="images/secondary.png"></li>
+    <li style="float: right" id="nomeUser"><a href="#perfil"></a></li>
+    <li style="float:right"><a href="registo.html">Sign Up</a></li>
+  </ul>
+
+  <h2 class="titulo">Who We Are</h2> 
+  <p class="infotext">Artrail was born from a wish to do more. We wanted to divulge street art to everyone and break
+    the stigma that street art is something that only takes from the overall aesthetic of our streets.
+    This type of art adds. It gives atmosphere, it irradiates the values of urban culture,
+    addresses social issues, all whilst contributing to making our streets a more
+    culturally diverse and fun place to walk around.</p><br>
+
+  <div class="flex-container">
+    <div id="viewContainer">
+    <img class="tt" src="images/imgs/img1.png">
+    <img class="tt" src="images/imgs/img2.png">
+    <img class="tt" src="images/imgs/img3.png">
+    <img class="tt" src="images/imgs/img4.png">
+    <img class="tt" src="images/imgs/img5.png">
+    <img class="tt" src="images/imgs/img6.png">
+    <img class="tt" src="images/imgs/img7.png">
+    <img class="tt" src="images/imgs/img8.png">
+    <img class="tt" src="images/imgs/img9.png">
+    <img class="tt" src="images/imgs/img10.png">
+    <img class="tt" src="images/imgs/img11.png">
+    <img class="tt" src="images/imgs/img12.png">
+    <img class="tt" src="images/imgs/img13.png">
+  </div></div>
+
+  <h2 class="titulo">What We Do</h2>
+  <p class="infotext"></p><br>
+
+  <h2 class="titulo">Mobile App</h2>
+  <p class="infotext">Artrail was born from a wish</p><br>
+
+  <script>
+    $(document).ready(function(){
+        
+     $(document).ready(function(){
+       var outerContent = $('.flex-container');
+       var innerContent = $('.flex-container > div');
+      
+       outerContent.scrollLeft( (innerContent.width() - outerContent.width()) / 2);
+
+       });
+          
+    });
+ </script>
+  
+ <style>
+    div {
+        margin:0;
+        padding:0;
+    }    
+    #viewContainer {
+        height:120px;
+        width:1000px;
+        display:table;
+    }
+    </style>
+  
+
+</body>
+
+</html>
