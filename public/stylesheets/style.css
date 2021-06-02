@@ -71,13 +71,33 @@ a {
   color: rgb(103 60 253);
 }
 
-p {
+info p {
+  padding: 10px;
+  padding-left: 20px;
+  color: rgb(255, 255, 255);
+  font-size: 27px;
+}
+
+info img{
+  margin: auto;
+  display: block;
+  max-width: 470px;
+  margin-top: 20px;
+  border-radius: 9px;
 }
 
 h1 {
   font-size: 18px;
   color: black;
   padding:0px;
+}
+
+.logInOut:hover{
+  cursor: pointer;
+}
+
+#nomeUser:hover{
+  cursor: pointer;
 }
 
 h2 {

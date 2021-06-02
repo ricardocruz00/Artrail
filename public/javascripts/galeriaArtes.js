@@ -20,12 +20,17 @@ async function loadArtes() {
         }
 }
 
-
+async function logOut() {
+    await sessionStorage.removeItem("userID");
+    window.location = "index.html";
+}
 
 async function showArtes(artes) {
     if (sessionStorage.getItem("userID") !== null) {
         let nomeUser = document.getElementById("nomeUser");
         nomeUser.innerHTML = "<a>" + sessionStorage.getItem("nome_user") + "</a>";
+        let logOut = document.getElementById("logOut");
+        logOut.innerHTML = "<li style='float:right'><a onclick='logOut()'>LogOut</a></li>";
     }
     let elemAside = document.getElementById("galeria");
     let html = "";

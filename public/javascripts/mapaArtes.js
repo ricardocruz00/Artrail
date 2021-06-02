@@ -24,6 +24,12 @@ async function loadArtes() {
 
 
 async function showArtesMapa(arteID, arteNome, arteArtista, arteImagem) {
-    //html += 
+    let html = "";
+    html+="<img src=" + arteImagem + ">"+
+    "<p>Nome da arte: "+arteNome+"</p>"+
+    "<p>Nome Artista: "+arteArtista+"</p>";
+     
+
+    document.getElementById("infoC").innerHTML = html;
     console.log(arteID, arteNome, arteArtista, arteImagem);
 }
