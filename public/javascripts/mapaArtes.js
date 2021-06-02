@@ -12,7 +12,8 @@ async function loadArtes() {
                 dataType: "json"
             });
             //console.log(JSON.stringify(artes));
-            showArtes(artes);
+            //showArtes(artes);
+            artesMarkers(artes);
         } catch (err) {
             console.log(err);
             elemAside.innerHTML = "<h1> Página não está disponível</h1>" +
@@ -22,9 +23,7 @@ async function loadArtes() {
 
 
 
-async function showArtes(artes) {
-    for (let arte of artes) {
-        artesMarkers(arte.latitude, arte.longitude, arte.nome, arte.id);
-        console.log(JSON.stringify(arte.latitude));
-        }
+async function showArtesMapa(arteID, arteNome, arteArtista, arteImagem) {
+    //html += 
+    console.log(arteID, arteNome, arteArtista, arteImagem);
 }

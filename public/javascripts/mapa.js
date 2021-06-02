@@ -57,14 +57,13 @@ searchControl.on('results', function (data) {
 // });
 // }
 
-function artesMarkers(lat, long, nome, arteID) {
-  var marker = markersLayer.addLayer(L.marker([lat, long]).bindPopup("<input type='button' class='markerInput' onclick='selecionarMarkerArte(" + arteID + ")' value='" + nome + "'>").addTo(mymap));
+function artesMarkers(artes) {
+  for (let arte of artes) {
+  var marker = markersLayer.addLayer(L.marker([arte.latitude, arte.longitude]).bindPopup("<input type='button' class='markerInput' onclick='showArtesMapa("+ arte.arteID1 +","+ JSON.stringify(arte.nome)+","+ JSON.stringify(arte.nome_artista) +","+ JSON.stringify(arte.imagem) +")' value='" + arte.nome + "'>").addTo(mymap));
+//    artesMarkers(arte.latitude, arte.longitude, arte.nome, arte.id);                                           
+    console.log(JSON.stringify(arte.arteID1));
+    }
 }
-
-//  function selecionarMarkerArte(arteID, nome_artista) {
-//    sessionStorage.setItem("arteID", arteID);
-//    sessionStorage.setItem("nome_artista",nome_artista);
-// }
 
 function getArteNome(nomeArte) {
   sessionStorage.setItem("arteNome", nomeArte);
