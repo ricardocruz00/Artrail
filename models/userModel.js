@@ -28,3 +28,23 @@ module.exports.newUser = async function (user) {
         return { status: 500, data: err };
     }
 }
+
+module.exports.getFavorites = async function (idUser) {
+
+    try {
+        let sql = "select descricao, DATE_FORMAT(sessaoFotos.timestamp, '%d/%m/%Y às %H:%i') as timestamp, sessao_id, imagem "+
+        "FROM favoritos "+ 
+        "INNER JOIN user ON user.id = favoritos.user_id "+
+        "INNER JOIN sessaoFotos ON sessaoFotos.id = favoritos.sessao_id "+
+        "INNER JOIN fotografia ON sessaoFotos.id = fotografia.fotografiaInfo_id "+ 
+        "where favoritos.user_id=? AND favoritos.isFav=1 AND fotografia.id in (select max(fotografia.id) "+
+                                 "FROM sessaoFotos "+
+                                 "INNER JOIN fotografia ON sessaoFotos.id = fotografia.fotografiaInfo_id "+
+                                 "group by sessaoFotos.id ) ";
+        let favoritos = await pool.query(sql, [idUser]);
+        return { status: 200, data: favoritos };
+    } catch (err) {
+        console.log(err);
+        return { status: 500, data: err };
+    }
+}

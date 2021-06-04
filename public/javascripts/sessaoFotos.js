@@ -1,5 +1,13 @@
 window.onload = async function() {
 
+    if (sessionStorage.getItem("userID") !== null) {
+        let nomeUser = document.getElementById("nomeUser");
+        nomeUser.innerHTML = "<a>" + sessionStorage.getItem("nome_user") + "</a>";
+        let logOut = document.getElementById("logOut");
+        logOut.innerHTML = "<li style='float:right'><a onclick='logOut()'>LogOut</a></li>";
+        nomeUser.innerHTML = "<a href='userPage.html'>" + sessionStorage.getItem("nome_user") + "</a>";
+    }
+
     let sessaoID = await sessionStorage.getItem("sessaoID");
       let sessao = await $.ajax({
         url: "/api/sessoes/info/"+sessaoID,
@@ -8,7 +16,9 @@ window.onload = async function() {
     });
     console.log(sessao);
 
-    document.getElementById("sessao").innerHTML = "<p>Descrição: "+sessao.sessaoInfo.descricao+"</p>"+
+    document.getElementById("sessao").innerHTML =
+    // "<button class='material-icons btn'>favorite</button>"+
+    "<p>Descrição: "+sessao.sessaoInfo.descricao+"</p>"+
     "<p>Estado de Conservação: "+sessao.sessaoInfo.estado_conservacao+"</p>"+
     "<p>"+sessao.sessaoInfo.timestamp+"</p>"+
     "<p>Publicado por: "+sessao.sessaoInfo.nome_user+"</p>"
@@ -20,4 +30,9 @@ window.onload = async function() {
         }
     elemAside.innerHTML = htmlImage;
 
+}
+
+async function logOut() {
+    await sessionStorage.removeItem("userID");
+    window.location = "sessaoFotos.html";
 }

@@ -2,6 +2,14 @@ window.onload = async function() {
     let arteID = sessionStorage.getItem("arteID");
     let nome_artista = sessionStorage.getItem("nome_artista");
     
+    if (sessionStorage.getItem("userID") !== null) {
+        let nomeUser = document.getElementById("nomeUser");
+        nomeUser.innerHTML = "<a>" + sessionStorage.getItem("nome_user") + "</a>";
+        let logOut = document.getElementById("logOut");
+        logOut.innerHTML = "<li style='float:right'><a onclick='logOut()'>LogOut</a></li>";
+        nomeUser.innerHTML = "<a href='userPage.html'>" + sessionStorage.getItem("nome_user") + "</a>";
+    }
+
     let sessoes = await $.ajax({
         url: "/api/sessoes/"+arteID,
         method: "get",
@@ -42,4 +50,9 @@ window.onload = async function() {
 function showSessao(sessaoID) {
         sessionStorage.setItem("sessaoID",sessaoID);
         window.location = "sessaoFotos.html";
-    }
+}
+
+async function logOut() {
+    await sessionStorage.removeItem("userID");
+    window.location = "sessoes.html";
+}

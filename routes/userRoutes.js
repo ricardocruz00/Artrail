@@ -21,4 +21,14 @@ router.post('/novoUser', async function (req, res, next) {
     send(result.data);
 });
 
+
+
+/* GET favoritos */
+router.get('/favoritos/:id', async function(req, res, next) {
+  let idUser = req.params.id;  
+  let result = await userModel.getFavorites(idUser);
+    res.status(result.status).
+       send(result.data);
+});
+
 module.exports = router;

@@ -1,5 +1,17 @@
 window.onload = function () {
     loadArtes();
+    if (sessionStorage.getItem("userID") !== null) {
+        let nomeUser = document.getElementById("nomeUser");
+        nomeUser.innerHTML = "<a>" + sessionStorage.getItem("nome_user") + "</a>";
+        let logOut = document.getElementById("logOut");
+        logOut.innerHTML = "<li style='float:right'><a onclick='logOut()'>LogOut</a></li>";
+        nomeUser.innerHTML = "<a href='userPage.html'>" + sessionStorage.getItem("nome_user") + "</a>";
+    }
+}
+
+async function logOut() {
+    await sessionStorage.removeItem("userID");
+    window.location = "mapa.html";
 }
 
 async function loadArtes() {
@@ -27,7 +39,7 @@ async function showArtesMapa(arteID, arteNome, arteArtista, arteImagem) {
     let html = "";
     html+="<img src=" + arteImagem + ">"+
     "<p>Nome da arte: "+arteNome+"</p>"+
-    "<p>Nome Artista: "+arteArtista+"</p>";
+    "<p>Artista: "+arteArtista+"</p>";
      
 
     document.getElementById("infoC").innerHTML = html;

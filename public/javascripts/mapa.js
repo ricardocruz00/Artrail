@@ -56,10 +56,20 @@ searchControl.on('results', function (data) {
 
 // });
 // }
+var artIcon = new L.Icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-violet.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
 
 function artesMarkers(artes) {
+  
   for (let arte of artes) {
-  var marker = markersLayer.addLayer(L.marker([arte.latitude, arte.longitude]).bindPopup("<input type='button' class='markerInput' onclick='showArtesMapa("+ arte.arteID1 +","+ JSON.stringify(arte.nome)+","+ JSON.stringify(arte.nome_artista) +","+ JSON.stringify(arte.imagem) +")' value='" + arte.nome + "'>").addTo(mymap));
+  var marker = markersLayer.addLayer(L.marker([arte.latitude, arte.longitude], {icon: artIcon}).bindPopup("<input type='button' class='markerInput' onclick='showArtesMapa("+ arte.arteID1 +","+ JSON.stringify(arte.nome)+","+ JSON.stringify(arte.nome_artista) +","+ JSON.stringify(arte.imagem) +")' value='" + arte.nome + "'>").addTo(mymap));
 //    artesMarkers(arte.latitude, arte.longitude, arte.nome, arte.id);                                           
     console.log(JSON.stringify(arte.arteID1));
     }

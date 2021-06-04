@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var sessionModel = require("../models/sessoesModel");
 
-/* GET all sessões */
+/* GET sessões */
 router.get('/:id', async function(req, res, next) {
   let idArte = req.params.id;  
   let result = await sessionModel.getSessoes(idArte);

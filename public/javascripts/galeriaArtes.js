@@ -31,6 +31,7 @@ async function showArtes(artes) {
         nomeUser.innerHTML = "<a>" + sessionStorage.getItem("nome_user") + "</a>";
         let logOut = document.getElementById("logOut");
         logOut.innerHTML = "<li style='float:right'><a onclick='logOut()'>LogOut</a></li>";
+        nomeUser.innerHTML = "<a href='userPage.html'>" + sessionStorage.getItem("nome_user") + "</a>";
     }
     let elemAside = document.getElementById("galeria");
     let html = "";

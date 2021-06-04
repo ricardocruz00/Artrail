@@ -3,18 +3,19 @@
 <head>
   <title>Artrail</title>
   <meta charset="utf-8" />
+  <link rel="stylesheet" href="/stylesheets/userPage.css">
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <!-- <link rel="stylesheet" href="/stylesheets/userPage.css"> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <!-- add icon link -->
     <link rel="icon" href="images/logo.png" type="image/x-icon">
-    <script src="javascripts/sessaoFotos.js"></script>
+    <script src="javascripts/user.js"></script>
 </head>
 
 <body>
   <ul>
-    <li><a href="index.html">Home</a></li>
+    <li><a class="active" href="index.html">Home</a></li>
     <li><a href="aboutus.html">About Us</a></li>
     <li><a href="mapa.html">Map</a></li>
     <li><a href="#contact">Leaderboard</a></li>
@@ -23,17 +24,12 @@
     <section class="logInOut" id="logOut"><li style="float:right"><a href="registo.html">Sign Up</a></li></section>
   </ul>
 
-  <section id="fotos"></section>
-  <section class="sessao" id="sessao"></section>
-
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
-
-<label for="id-of-input" class="custom-checkbox">
-  <input type="checkbox" id="id-of-input"/>
-  <i class="glyphicon glyphicon-heart-empty"></i>
-  <i class="glyphicon glyphicon-heart"></i>
-</label>
-
+  <section class="mainContainer">
+    <section class="pointsContainer" id="points">
+    </section>
+    <section class="favoritos" id="favoritos">
+    </section>
+  </section>
 </body>
 
 </html>
