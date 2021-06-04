@@ -5,6 +5,8 @@
   <meta charset="utf-8" />
   <link rel="stylesheet" href="/stylesheets/userPage.css">
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
   <!-- <link rel="stylesheet" href="/stylesheets/userPage.css"> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -24,8 +26,16 @@
     <section class="logInOut" id="logOut"><li style="float:right"><a href="registo.html">Sign Up</a></li></section>
   </ul>
 
+  <section class="userSection">
+    <img src="images/userImage.png" class="userImage">
+    <section id="usernameSection"></section>
+  </section>
+
   <section class="mainContainer">
-    <section class="pointsContainer" id="points">
+    <section class="pointsContainer">
+      <p class="pontosUser" id='pontosUser'>10 Pontos</p>
+      <p class="favoritosLabel" >Favoritos</p>
+      <i class="glyphicon glyphicon-heart"></i>
     </section>
     <section class="favoritos" id="favoritos">
     </section>

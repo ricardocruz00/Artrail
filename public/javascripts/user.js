@@ -7,6 +7,8 @@ window.onload = async function () {
         let logOut = document.getElementById("logOut");
         logOut.innerHTML = "<li style='float:right'><a onclick='logOut()'>LogOut</a></li>";
         nomeUser.innerHTML = "<a href='userPage.html'>" + sessionStorage.getItem("nome_user") + "</a>";
+        let userSection = document.getElementById("usernameSection");
+        userSection.innerHTML = "<p class='nome'>" + sessionStorage.getItem("nome_user") + "</p>";
     }
 }
 
@@ -30,7 +32,8 @@ async function showFavoritos(favoritos) {
     console.log(JSON.stringify(favoritos.descricao));
     let html = "";
     for (let favorito of favoritos) {
-        html = "<figure class='img__wrap' onclick='showSessao(" + favorito.sessao_id + ")'>" +
+        console.log(JSON.stringify(favorito.descricao));
+        html += "<figure class='img__wrap' onclick='showSessao(" + favorito.sessao_id + ")'>" +
             "<img class='favImage' src=" + favorito.imagem + ">" +
             "<div class='img__description_layer'>" +
             "<p class='img__description'>" +
@@ -38,12 +41,7 @@ async function showFavoritos(favoritos) {
             "Descrição: " + favorito.descricao + "<br>" +
             "</p>" +
             "</div></figure>";
-
-        html1 =
-            "<img src=" + favorito.imagem + ">" +
-            "<p>"+ favorito.timestamp + "<br>" +
-            "Descrição: " + favorito.descricao + "<br>" +
-            "</p>";
+            
     }
     document.getElementById("favoritos").innerHTML = html;
 }

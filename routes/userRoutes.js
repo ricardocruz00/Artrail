@@ -31,4 +31,15 @@ router.get('/favoritos/:id', async function(req, res, next) {
        send(result.data);
 });
 
+
+
+/*add favoritos*/
+router.post('addFav',async function(req,res,next) {
+  let favorito = req.query;
+  let result = await userModel.newUser(favorito);
+  res.status(result.status).
+    send(result.data);
+});
+
+
 module.exports = router;

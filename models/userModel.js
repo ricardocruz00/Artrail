@@ -30,7 +30,6 @@ module.exports.newUser = async function (user) {
 }
 
 module.exports.getFavorites = async function (idUser) {
-
     try {
         let sql = "select descricao, DATE_FORMAT(sessaoFotos.timestamp, '%d/%m/%Y às %H:%i') as timestamp, sessao_id, imagem "+
         "FROM favoritos "+ 
@@ -43,6 +42,23 @@ module.exports.getFavorites = async function (idUser) {
                                  "group by sessaoFotos.id ) ";
         let favoritos = await pool.query(sql, [idUser]);
         return { status: 200, data: favoritos };
+    } catch (err) {
+        console.log(err);
+        return { status: 500, data: err };
+    }
+}
+
+module.exports.addFavorites = async function (favorito) {
+    try{
+        let sqlFavVerf = "select favoritos.sessao_id, favoritos.user_id from favoritos where favoritos.sessao_id=? AND favoritos.user_id = ?;";
+        let favVerf = await pool.query(sqlFavVerf, favorito.sessao_id, favorito.user_id);
+        if(favVerf.length ==0) {
+            let sql = "insert into favoritos (isFav,sessao_id,user_id) values (?,?,?);";
+            let result = await pool.query(sql, [ favorito.isFav, favorito.sessao_id, favorito.user_id]);
+            return { status: 200, data: result };
+        }
+        else
+            return null;
     } catch (err) {
         console.log(err);
         return { status: 500, data: err };
