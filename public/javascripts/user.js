@@ -28,14 +28,15 @@ async function loadFavoritos() {
 }
 
 async function showFavoritos(favoritos) {
-    console.log(JSON.stringify(favoritos));
-    console.log(JSON.stringify(favoritos.descricao));
+    //console.log(JSON.stringify(favoritos));
     let html = "";
     for (let favorito of favoritos) {
         console.log(JSON.stringify(favorito.descricao));
-        html += "<figure class='img__wrap' onclick='showSessao(" + favorito.sessao_id + ")'>" +
-            "<img class='favImage' src=" + favorito.imagem + ">" +
-            "<div class='img__description_layer'>" +
+        html +=
+            "<figure class='img__wrap'>" +
+            "<section class='favImage'>"+ favorito.imagem +"</section>" +
+            "<input type='button' class='removeFavB' value='✖ Retirar' onclick='removerFavorito(" + favorito.favoritosID + ")'>"+
+            "<div class='img__description_layer' onclick='showSessao(" + favorito.sessao_id + ")'>" +
             "<p class='img__description'>" +
             "" + favorito.timestamp + "<br>" +
             "Descrição: " + favorito.descricao + "<br>" +
@@ -50,3 +51,17 @@ function showSessao(sessaoID) {
     sessionStorage.setItem("sessaoID", sessaoID);
     window.location = "sessaoFotos.html";
 }
+
+//async function removerFavorito(favoritosID) {
+//     try {
+//         let reserva = await $.ajax({
+//           url: "/api/users/updateNotificacao/" + favoritosID,
+//           method: "put",
+//           dataType: "json"
+//         });
+//         loadFavoritos();
+//       } catch (err) {
+//         console.log(err);
+//       }
+//     //window.location = "userPage.html";
+// }

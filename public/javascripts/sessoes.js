@@ -26,7 +26,7 @@ window.onload = async function() {
     let html = "";
     for(let sessao of sessoes) {
         html+= "<figure class='img__wrap' onclick='showSessao("+sessao.sessaoID1+")'>"+
-        "<img class='image' src="+ sessao.imagem +">"+
+        ""+ sessao.imagem +""+
         "<div class='img__description_layer'>"+
         "<p class='img__description'>"+
         "Descrição: "+sessao.descricao+"<br>"+

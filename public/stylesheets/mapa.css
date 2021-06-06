@@ -28,7 +28,7 @@ h1 {
 
 .markerInput {
   color: white;
-  font-size: 18px;
+  font-size: 15px;
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -80,4 +80,20 @@ h1 {
 .markerInput:focus {
    background-color: #8f02b3; 
    color: white;
+}
+
+info p {
+  padding: 10px;
+  padding-left: 20px;
+  color: rgb(255, 255, 255);
+  font-size: 27px;
+}
+
+info img{
+  margin: auto;
+  display: block;
+  max-width: 470px;
+  max-height: 470px;
+  margin-top: 20px;
+  border-radius: 9px;
 }

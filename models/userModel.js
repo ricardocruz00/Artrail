@@ -31,7 +31,7 @@ module.exports.newUser = async function (user) {
 
 module.exports.getFavorites = async function (idUser) {
     try {
-        let sql = "select descricao, DATE_FORMAT(sessaoFotos.timestamp, '%d/%m/%Y às %H:%i') as timestamp, sessao_id, imagem "+
+        let sql = "select favoritos.id as favoritosID, descricao, DATE_FORMAT(sessaoFotos.timestamp, '%d/%m/%Y às %H:%i') as timestamp, sessao_id, imagem "+
         "FROM favoritos "+ 
         "INNER JOIN user ON user.id = favoritos.user_id "+
         "INNER JOIN sessaoFotos ON sessaoFotos.id = favoritos.sessao_id "+
@@ -39,7 +39,7 @@ module.exports.getFavorites = async function (idUser) {
         "where favoritos.user_id=? AND favoritos.isFav=1 AND fotografia.id in (select max(fotografia.id) "+
                                  "FROM sessaoFotos "+
                                  "INNER JOIN fotografia ON sessaoFotos.id = fotografia.fotografiaInfo_id "+
-                                 "group by sessaoFotos.id ) ";
+                                 "group by sessaoFotos.id ) ORDER BY favoritos.id DESC";
         let favoritos = await pool.query(sql, [idUser]);
         return { status: 200, data: favoritos };
     } catch (err) {
@@ -59,6 +59,17 @@ module.exports.addFavorites = async function (favorito) {
         }
         else
             return null;
+    } catch (err) {
+        console.log(err);
+        return { status: 500, data: err };
+    }
+}
+
+module.exports.removeFavorites = async function (favoritoID) {
+    try {
+            let sql = "UPDATE favoritos SET IsFav= 0 WHERE favoritos.id=?;";
+            let result = await pool.query(sql, favoritoID);
+            return { status: 200, data: result };
     } catch (err) {
         console.log(err);
         return { status: 500, data: err };

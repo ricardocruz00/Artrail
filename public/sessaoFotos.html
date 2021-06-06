@@ -4,12 +4,14 @@
   <title>Artrail</title>
   <meta charset="utf-8" />
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="/stylesheets/sessaoFotos.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <!-- add icon link -->
-    <link rel="icon" href="images/logo.png" type="image/x-icon">
-    <script src="javascripts/sessaoFotos.js"></script>
+  <!-- add icon link -->
+  <link rel="icon" href="images/logo.png" type="image/x-icon">
+  <script src="javascripts/sessaoFotos.js"></script>
 </head>
 
 <body>
@@ -20,19 +22,42 @@
     <li><a href="#contact">Leaderboard</a></li>
     <li><img class="logoNav" src="images/secondary.png"></li>
     <li style="float: right" id="nomeUser"><a href="userPage.html"></a></li>
-    <section class="logInOut" id="logOut"><li style="float:right"><a href="registo.html">Sign Up</a></li></section>
+    <section class="logInOut" id="logOut">
+      <li style="float:right"><a href="registo.html">Sign Up</a></li>
+    </section>
   </ul>
-  <section class="report" id="report"><input type="button" value="Reportar"></section>
-  <section id="fotos"></section>
-  <section class="sessao" id="sessao"></section>
 
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
 
-<label for="id-of-input" class="custom-checkbox">
-  <input type="checkbox" id="id-of-input"/>
-  <i class="glyphicon glyphicon-heart-empty"></i>
-  <i class="glyphicon glyphicon-heart"></i>
-</label>
+  <section class="userSection">
+    <img src="images/userpic.png" class="userImage">
+    <section id="usernameSection" class="nome"></section>
+  </section>
+
+  <section class="container2">
+    <section class="containerGaleria">
+      <section id="fotos">
+
+            <!-- <section style="width:30%;cursor:zoom-in" onclick="document.getElementById('1').style.display = 'block'">
+              <img src="https://i.ibb.co/X58DYd4/d752933c95538b1415a76e6ec8dedd43.jpg" alt="d752933c95538b1415a76e6ec8dedd43" border="0">
+                </section>
+              <div id='1' class='w3-modal' onclick="this.style.display='none'">
+                <div class='w3-modal-content w3-animate-zoom' >
+                  <img src="https://i.ibb.co/X58DYd4/d752933c95538b1415a76e6ec8dedd43.jpg" alt="d752933c95538b1415a76e6ec8dedd43" border="0">
+                </div>
+              </div> -->
+
+      </section>
+    </section>
+    <section class="containerInfo">
+      <section class="sessao" id="sessao"></section>
+      <section class="report" id="report"><input type="button" value="Reportar"></section>
+    </section>
+  </section>
+
+  <section class="container3" id="descricao"></section>
+
+  <!-- <i class="glyphicon glyphicon-heart-empty"></i>
+  <i class="glyphicon glyphicon-heart"></i> -->
 
 </body>
 

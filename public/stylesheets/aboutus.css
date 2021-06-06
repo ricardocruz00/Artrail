@@ -52,6 +52,10 @@ body {
     padding: 0px;
 }
 
+.titulo{
+    padding-top: 50px;
+}
+
 .tt{
     height: 550px;
     margin-top: -90px;
@@ -59,3 +63,12 @@ body {
     margin-right: -300px;
 }
 
+.infotext5{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 45px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}

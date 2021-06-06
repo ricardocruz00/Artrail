@@ -33,13 +33,21 @@ router.get('/favoritos/:id', async function(req, res, next) {
 
 
 
-/*add favoritos*/
-router.post('addFav',async function(req,res,next) {
+/*add favorito (alterar se tiver erros)*/
+router.post('/addFav',async function(req,res,next) {
   let favorito = req.query;
-  let result = await userModel.newUser(favorito);
+  let result = await userModel.addFavorites(favorito);
   res.status(result.status).
     send(result.data);
 });
 
+
+
+/*remove favorito (alterar se tiver erros)*/
+router.put('/removeFav/:favoritoID', async function(req, res, next) {
+  let favoritoID = req.params.favoritoID;
+  let result = await userModel.removeFavorites(favoritoID);
+  res.status(result.status).send(result.data);
+});
 
 module.exports = router;

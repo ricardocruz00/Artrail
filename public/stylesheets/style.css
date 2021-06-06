@@ -15,7 +15,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   backface-visibility: hidden;
-  background-image: url("../images/backgroundsMain-04.png");
+  background-image: url("../images/backgroundsMain-04.png"); 
   color: white;
 }
 
@@ -72,21 +72,6 @@ a {
   color: rgb(103 60 253);
 }
 
-info p {
-  padding: 10px;
-  padding-left: 20px;
-  color: rgb(255, 255, 255);
-  font-size: 27px;
-}
-
-info img{
-  margin: auto;
-  display: block;
-  max-width: 470px;
-  margin-top: 20px;
-  border-radius: 9px;
-}
-
 h1 {
   font-size: 18px;
   color: black;
@@ -126,10 +111,6 @@ h2 {
   font-size: 40px;
   font-weight: bold;
   color: white;
-}
-
-.fotos{
-  padding-left: 10px;
 }
 
 /* checkbox heart */

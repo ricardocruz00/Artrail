@@ -37,11 +37,16 @@ async function loadArtes() {
 
 async function showArtesMapa(arteID, arteNome, arteArtista, arteImagem) {
     let html = "";
-    html+="<img src=" + arteImagem + ">"+
+    html+="<section class='fotoArteMap' style='cursor: pointer;' onclick='showSessoes("+arteID+")'>" + arteImagem + "</section>"+
     "<p>Nome da arte: "+arteNome+"</p>"+
     "<p>Artista: "+arteArtista+"</p>";
      
 
     document.getElementById("infoC").innerHTML = html;
     console.log(arteID, arteNome, arteArtista, arteImagem);
+}
+
+function showSessoes(arteID) {
+    sessionStorage.setItem("arteID",arteID);
+    window.location = "sessoes.html";
 }
