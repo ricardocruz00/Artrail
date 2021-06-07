@@ -27,7 +27,7 @@ window.onload = async function() {
         "<p>"+sessao.sessaoInfo.timestamp+"</p>"
     //"<p>Publicado por: "+sessao.sessaoInfo.nome_user+"</p>"
 
-    let elemAside = document.getElementById("fotos");
+    let elemFotos = document.getElementById("fotos");
     let htmlImage = "";
     let htmlImage1 = "";
     let htmlImage2 = "";
@@ -40,20 +40,28 @@ window.onload = async function() {
             //   "<div class='w3-modal-content w3-animate-zoom' >"+
             //     ""+ foto.imagem +""+
             //   "</div>"+
-            // "</div>";
+            // "</div>"; 
 
-            htmlImage2 +="<section style='width:30%;cursor:zoom-in' onclick='document.getElementById('1').style.display = 'block''>"+
-            ""+ foto.imagem +""+
-              "</section>"+
-            "<div id='1' class='w3-modal' onclick='this.style.display='none''>"+
+            htmlImage2 +="<section style='width:30%;cursor:zoom-in' onclick='zoomImage("+foto.fotografiaID+")'>"+
+            foto.imagem +
+            "</section>"+
+            "<div id='"+foto.fotografiaID+"' class='w3-modal' onclick='sairZoom("+foto.fotografiaID+")'>"+
               "<div class='w3-modal-content w3-animate-zoom' >"+
               ""+ foto.imagem +""+
               "</div>"+
             "</div>";
         }
-    elemAside.innerHTML = htmlImage2;
+    elemFotos.innerHTML = htmlImage2;
 
 }
+
+function zoomImage(fotografiaID){
+    console.log(fotografiaID);
+    document.getElementById(fotografiaID).style.display = 'block'
+}
+
+function sairZoom(fotografiaID){
+    document.getElementById(fotografiaID).style.display = 'none'}
 
 async function logOut() {
     await sessionStorage.removeItem("userID");
