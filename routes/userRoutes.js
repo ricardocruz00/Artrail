@@ -42,7 +42,6 @@ router.post('/addFav',async function(req,res,next) {
 });
 
 
-
 /*remove favorito (alterar se tiver erros)*/
 router.put('/removeFav/:favoritoID', async function(req, res, next) {
   let favoritoID = req.params.favoritoID;

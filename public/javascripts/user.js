@@ -41,7 +41,8 @@ async function showFavoritos(favoritos) {
             "" + favorito.timestamp + "<br>" +
             "Descrição: " + favorito.descricao + "<br>" +
             "</p>" +
-            "</div></figure>";
+            "</div>"+
+            "</figure>";
             
     }
     document.getElementById("favoritos").innerHTML = html;
@@ -52,16 +53,15 @@ function showSessao(sessaoID) {
     window.location = "sessaoFotos.html";
 }
 
-//async function removerFavorito(favoritosID) {
-//     try {
-//         let reserva = await $.ajax({
-//           url: "/api/users/updateNotificacao/" + favoritosID,
-//           method: "put",
-//           dataType: "json"
-//         });
-//         loadFavoritos();
-//       } catch (err) {
-//         console.log(err);
-//       }
-//     //window.location = "userPage.html";
-// }
+async function removerFavorito(favoritosID) {
+     try {
+         let favorito = await $.ajax({
+           url: "/api/users/removeFav/" + favoritosID,
+           method: "put",
+           dataType: "json"
+         });
+         loadFavoritos();
+       } catch (err) {
+         console.log(err);
+       }
+}

@@ -58,7 +58,9 @@ module.exports.addFavorites = async function (favorito) {
             return { status: 200, data: result };
         }
         else
-            return null;
+            let sql = "UPDATE favoritos SET IsFav= 1 WHERE favoritos.id=?;";
+            let result = await pool.query(sql, favoritoID);
+            return { status: 200, data: result };
     } catch (err) {
         console.log(err);
         return { status: 500, data: err };
