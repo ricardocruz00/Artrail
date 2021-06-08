@@ -93,6 +93,33 @@ h2 {
   font-weight:1000;
 }
 
+.backB{
+  position: absolute;
+  left: 120px;
+  top: 80px;
+}
+
+input[type=button] {
+  border: none;
+  color: rgb(92, 41, 212);
+  border-radius: 15px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 18px;
+  padding-left: 18px;
+  font-size: 14px;
+  background-color: #ffffff;
+  text-align: center;
+  cursor: pointer;
+}
+
+input[type=button]:hover {
+  color:#ffffff ;
+  background-color: rgb(92, 41, 212);
+  -webkit-box-shadow: 4px 4px 19px -1px rgba(0, 0, 0, 0.60); 
+  box-shadow: 4px 4px 19px -1px rgba(0, 0, 0, 0.60);
+}
+
 .sessao{
   font-size: 20px;
   color: white;

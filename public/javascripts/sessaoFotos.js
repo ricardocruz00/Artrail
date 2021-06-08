@@ -21,7 +21,8 @@ window.onload = async function() {
 
     document.getElementById("sessao").innerHTML =
     // "<button class='material-icons btn'>favorite</button>"+
-        "<h3>"+sessao.sessaoInfo.nome+"</h3>"+
+        "<p class='nomeArte'>"+sessao.sessaoInfo.nome+"</p>"+
+        "<p>Artista: "+sessao.sessaoInfo.nome_artista+"</p>"+
         "<p>Descrição: "+sessao.sessaoInfo.descricao+"</p>"+
         "<p>Estado de Conservação: "+sessao.sessaoInfo.estado_conservacao+"</p>"+
         "<p>"+sessao.sessaoInfo.timestamp+"</p>"
@@ -42,7 +43,7 @@ window.onload = async function() {
             //   "</div>"+
             // "</div>"; 
 
-            htmlImage2 +="<section style='width:30%;cursor:zoom-in' onclick='zoomImage("+foto.fotografiaID+")'>"+
+            htmlImage2 +="<section class='imagemSessao' onclick='zoomImage("+foto.fotografiaID+")'>"+
             foto.imagem +
             "</section>"+
             "<div id='"+foto.fotografiaID+"' class='w3-modal' onclick='sairZoom("+foto.fotografiaID+")'>"+

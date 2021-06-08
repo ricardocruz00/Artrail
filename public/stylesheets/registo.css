@@ -12,15 +12,15 @@ body {
 }
 
 h1{
-    font-size: 38px;
+    font-size: 36px;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 18px;
 }
 
 p{
     font-size: 22px;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 18px;
 }
 
 input[type=button] {
@@ -36,6 +36,16 @@ input[type=button] {
     background-color: rgb(92, 41, 212);
     text-align: center;
     cursor: pointer;
+    margin-top: 20px;
+}
+
+
+input[type=button]:hover {
+    color: rgb(92, 41, 212);
+    background-color: #ffffff;
+    -webkit-box-shadow: 4px 4px 19px -1px rgba(0, 0, 0, 0.60); 
+    box-shadow: 4px 4px 19px -1px rgba(0, 0, 0, 0.60);
+    margin-top: 20px;
 }
 
 #SLIDE_BG {
@@ -116,7 +126,7 @@ input[type=text], input[type=email], input[type=password] {
     border: none;
     border-bottom: 2px solid rgb(80, 80, 80);
     width: 380px;
-    font-size: 17px;
+    font-size: 14px;
 }
 
 input[type=text]:hover, input[type=email]:hover, input[type=password]:hover {

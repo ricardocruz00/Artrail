@@ -1,6 +1,5 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
 
 *{
   font-family: 'Montserrat', sans-serif;
@@ -19,6 +18,10 @@ body {
   color: white;
 }
 
+.nomeArte{
+    font-size: 35px;
+    font-weight: 550;
+}
 
 .userSection{
     display: flex;
@@ -44,19 +47,34 @@ body {
     display: block;
 }
 
+.container2 ::-webkit-scrollbar-track {
+    background: none;
+}
+.container2 ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+.container2 ::-webkit-scrollbar-thumb {
+    background: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+
+
 .container2{
     display: grid;
-    grid-template-columns: 66% auto;
+    grid-template-columns: 60% auto;
     grid-template-rows: 100%;
     grid-template-areas:  
     'g i';
     width: 74%;
     margin: auto;
+    background-color: rgba(218, 218, 218, 0.15);  
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
 }
 
 .containerGaleria{
     grid-area: g;
-    background-color: brown;
     overflow-y: auto;
     overflow-x: hidden;
     height: 720px;
@@ -64,14 +82,29 @@ body {
 
 .containerInfo{
     grid-area: i;
-    background-color: rgb(54, 56, 24);
-}
-
-.fotoArteMap{
-    max-height: 100px;
-    cursor: pointer;
+    margin-left: 5%;
 }
 
 img{
     width:100%;
+}
+
+.imagemSessao{
+    cursor:zoom-in;
+    margin-left: 15%;
+}
+
+.w3-modal{
+    cursor:zoom-out;
+}
+
+.imagemSessao img{
+    width:500px;
+    height: 500px;
+    object-fit:cover;
+    padding:3%;
+}
+
+.fav{
+    margin-top: 20px;
 }

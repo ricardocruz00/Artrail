@@ -45,8 +45,6 @@ async function addUSer() {
         swal("Introduza um nome ", "");
     else if (newUsername.length == 0)
         swal("Introduza um username ", "");
-    else if (email.length == 0)
-        swal("Introduza um email ", "");
     else if (password.length == 0)
         swal("Introduza uma password ", "");
     else {

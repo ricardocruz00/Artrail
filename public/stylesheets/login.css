@@ -32,11 +32,18 @@ input[type=button] {
     padding-right: 40px;
     padding-left: 40px;
     font-size: 18px;
-    margin-bottom: 10px;
+    margin-top: 50px;
     background-color: rgb(92, 41, 212);
     text-align: center;
     cursor: pointer;
 }
+
+input[type=button]:hover {
+    color: rgb(92, 41, 212);
+    background-color: #ffffff;
+    -webkit-box-shadow: 4px 4px 19px -1px rgba(0, 0, 0, 0.60); 
+    box-shadow: 4px 4px 19px -1px rgba(0, 0, 0, 0.60);
+  }
 
 #SLIDE_BG {
     margin: 0px;

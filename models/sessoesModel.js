@@ -23,8 +23,9 @@ module.exports.getSessoes = async function (idArte) {
 
 module.exports.getOne = async function(idSessao) {
     try {
-        let sql = "SELECT nome, descricao, DATE_FORMAT(sessaoFotos.timestamp, '%d/%m/%Y às %H:%i') as timestamp, estado_conservacao, nome_user FROM sessaoFotos INNER JOIN user ON sessaoFotos.user_id = user.id INNER JOIN estadoConservacaoArte ON sessaoFotos.estadoArte_id = estadoConservacaoArte.id INNER JOIN arte ON arte.id = sessaoFotos.arte_id WHERE sessaoFotos.id = ?";
+        let sql = "SELECT nome_artista, nome, descricao, DATE_FORMAT(sessaoFotos.timestamp, '%d/%m/%Y às %H:%i') as timestamp, estado_conservacao, nome_user FROM sessaoFotos INNER JOIN user ON sessaoFotos.user_id = user.id INNER JOIN estadoConservacaoArte ON sessaoFotos.estadoArte_id = estadoConservacaoArte.id INNER JOIN arte ON arte.id = sessaoFotos.arte_id INNER JOIN arte_artista ON arte.id = arte_artista.arte_id INNER JOIN artista ON artista.id = arte_artista.artista_id WHERE sessaoFotos.id = ?";
         let sessoes = await pool.query(sql,[idSessao]);
+        //só da para um artista
         let sqlImage = "SELECT imagem, fotografia.id as fotografiaID FROM fotografia INNER JOIN sessaoFotos ON fotografia.fotografiaInfo_id = sessaoFotos.id WHERE sessaoFotos.id = ?"
         let fotos = await pool.query(sqlImage,[idSessao]); 
         let sessao = {sessaoInfo: sessoes[0],fotos: fotos } ;
