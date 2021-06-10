@@ -35,3 +35,20 @@ module.exports.getAll = async function () {
 //         return { status: 500, data: err };
 //     }
 // }
+
+module.exports.newCategoriaArte = async function (categoriaArte) {
+    try {
+            let sqlVerf = "SELECT * FROM arte_categoria WHERE arte_id = ?  AND categoria_id = ? AND user_id = ?";
+            let categoryVerf = await pool.query(sqlVerf, [categoriaArte.arte_id, categoriaArte.categoria_id , categoriaArte.user_id]);
+                if(categoryVerf.length == 0) {
+            let sql = "INSERT INTO arte_categoria (arte_id, categoria_id, user_id) VALUES (?,?,?);";
+            let result = await pool.query(sql, [categoriaArte.arte_id, categoriaArte.categoria_id , categoriaArte.user_id]);
+            return { status: 200, data: result };
+        }
+        else
+            return null;
+    } catch (err) {
+        console.log(err);
+        return { status: 500, data: err };
+    }
+}

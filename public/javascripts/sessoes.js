@@ -82,9 +82,31 @@ async function showCategorias(categorias){
         let html = "";
         for(let categoria of categorias) {
             console.log(JSON.stringify(categoria.categoria_nome));
-            html += "<input type='button' class='categoriaB' value='"+categoria.categoria_nome+"' onclick='adicionarCategoria("+categoria.categoriaID+")'></input>";
+            html += "<input type='button' class='categoriaB' value='"+categoria.categoria_nome+"' onclick='addCategoria("+categoria.categoriaID+")'></input>";
         }
         document.getElementById("categorias").innerHTML = html;
         document.getElementById("label").innerHTML = htmlLabel;
 }
+}
+
+async function addCategoria(categoria_id) {
+    let arte_id = sessionStorage.getItem("arteID")
+    let user_id = sessionStorage.getItem("userID")
+    let categoriaArte = {
+        user_id: user_id,
+        arte_id: arte_id,
+        categoria_id: categoria_id
+    }
+    console.log(categoriaArte);
+    try {
+        let result = await $.ajax({
+            url: "/api/artes/categoria",
+            method: "post",
+            dataType: "json",
+            data: JSON.stringify(categoriaArte),
+            contentType: "application/json"
+        });
+    } catch (err) {
+        console.log(err);
+    }
 }

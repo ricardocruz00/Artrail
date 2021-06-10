@@ -10,5 +10,14 @@ router.get('/', async function(req, res, next) {
        send(result.data);
 });
 
+/* add categoria da arte */
+router.post('/categoria', async function (req, res, next) {
+  let categoriaArte = req.body;
+  let result = await artModel.newCategoriaArte(categoriaArte);
+  console.log("routes "+JSON.stringify(categoriaArte));
+  res.status(result.status).
+    send(result.data);
+});
+
 
 module.exports = router
