@@ -4,7 +4,7 @@ window.onload = function () {
 
 async function loadArtes() {
 
-    let elemAside = document.getElementById("galeria");
+    let elem = document.getElementById("galeria");
         try {
             let artes = await $.ajax({
                 url: "/api/artes",
@@ -15,7 +15,7 @@ async function loadArtes() {
             showArtes(artes);
         } catch (err) {
             console.log(err);
-            elemAside.innerHTML = "<h1> Página não está disponível</h1>" +
+            elem.innerHTML = "<h1> Página não está disponível</h1>" +
                 "<h2> Por favor tente mais tarde</h2>";
         }
 }
@@ -31,15 +31,15 @@ async function showArtes(artes) {
         nomeUser.innerHTML = "<a>" + sessionStorage.getItem("nome_user") + "</a>";
         let logOut = document.getElementById("logOut");
         logOut.innerHTML = "<li style='float:right'><a onclick='logOut()'>LogOut</a></li>";
-        nomeUser.innerHTML = "<a href='userPage.html'>" + sessionStorage.getItem("nome_user") + "</a>";
+        nomeUser.innerHTML = "<a href='userPageSessoes.html'>" + sessionStorage.getItem("nome_user") + "</a>";
     }
-    let elemAside = document.getElementById("galeria");
+    let elemGaleria = document.getElementById("galeria");
     let html = "";
     for (let arte of artes) {
             html += "<figure onclick='showSessoes("+arte.arteID1+","+JSON.stringify(arte.nome_artista)+")' >"+
             ""+ arte.imagem +"</figure>";
         }
-    elemAside.innerHTML = html;
+    elemGaleria.innerHTML = html;
 }
 
 function showSessoes(arteID,nome_artista) {

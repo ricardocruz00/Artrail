@@ -1,11 +1,12 @@
 window.onload = async function() {
+    loadCategoriasArte();
 
     if (sessionStorage.getItem("userID") !== null) {
         let nomeUser = document.getElementById("nomeUser");
         nomeUser.innerHTML = "<a>" + sessionStorage.getItem("nome_user") + "</a>";
         let logOut = document.getElementById("logOut");
         logOut.innerHTML = "<li style='float:right'><a onclick='logOut()'>LogOut</a></li>";
-        nomeUser.innerHTML = "<a href='userPage.html'>" + sessionStorage.getItem("nome_user") + "</a>";
+        nomeUser.innerHTML = "<a href='userPageSessoes.html'>" + sessionStorage.getItem("nome_user") + "</a>";
     }
 
     let sessaoID = await sessionStorage.getItem("sessaoID");
@@ -15,35 +16,46 @@ window.onload = async function() {
         dataType: "json"
     });
     console.log(sessao);
+    console.log(sessao.reports.nReports);
 
     document.getElementById("usernameSection").innerHTML = 
         "<h3>"+sessao.sessaoInfo.nome_user+"</h3>";
-
+    
+        if (sessao.reports.nReports !== 1){
     document.getElementById("sessao").innerHTML =
-    // "<button class='material-icons btn'>favorite</button>"+
         "<p class='nomeArte'>"+sessao.sessaoInfo.nome+"</p>"+
         "<p>Artista: "+sessao.sessaoInfo.nome_artista+"</p>"+
         "<p>Descrição: "+sessao.sessaoInfo.descricao+"</p>"+
         "<p>Estado de Conservação: "+sessao.sessaoInfo.estado_conservacao+"</p>"+
-        "<p>"+sessao.sessaoInfo.timestamp+"</p>"
-    //"<p>Publicado por: "+sessao.sessaoInfo.nome_user+"</p>"
+        "<p>"+sessao.sessaoInfo.timestamp+"</p>"+
+        "<p>"+sessao.reports.nReports+" reports feito a esta sessão</p>";
+        
+        if (sessionStorage.getItem("userID") !== null) {
+            document.getElementById("sessao").innerHTML +=
+        "<section class='report' id='report'><input type='button' value='Reportar' onclick='addReport()'></section>"+
+        "<section class='fav' id='fav'><input type='button' value='Adicionar aos Favoritos' onclick='addFavorito()'></section>";
+        }
+}
+        else{
+            document.getElementById("sessao").innerHTML =
+        "<p class='nomeArte'>"+sessao.sessaoInfo.nome+"</p>"+
+        "<p>Artista: "+sessao.sessaoInfo.nome_artista+"</p>"+
+        "<p>Descrição: "+sessao.sessaoInfo.descricao+"</p>"+
+        "<p>Estado de Conservação: "+sessao.sessaoInfo.estado_conservacao+"</p>"+
+        "<p>"+sessao.sessaoInfo.timestamp+"</p>"+
+        "<p>"+sessao.reports.nReports+" report feito a esta sessão</p>";
+        
+        if (sessionStorage.getItem("userID") !== null) {
+            document.getElementById("sessao").innerHTML +=
+        "<section class='report' id='report'><input type='button' value='Reportar' onclick='addReport()'></section>"+
+        "<section class='fav' id='fav'><input type='button' value='Adicionar aos Favoritos' onclick='addFavorito()'></section>";
+        }
+        }
 
     let elemFotos = document.getElementById("fotos");
     let htmlImage = "";
-    let htmlImage1 = "";
-    let htmlImage2 = "";
     for (let foto of sessao.fotos) {
-            // htmlImage +="<div class='fotos'>"+ foto.imagem +"</div>";
-            // htmlImage1 +="<section style='width:30%;cursor:zoom-in' onclick='document.getElementById('"+foto.fotografiaID+"').style.display='block''>"+
-            // ""+ foto.imagem +""+
-            //   "</section>"+
-            // "<div id='"+foto.fotografiaID+"' class='w3-modal' onclick='this.style.display='none''>"+
-            //   "<div class='w3-modal-content w3-animate-zoom' >"+
-            //     ""+ foto.imagem +""+
-            //   "</div>"+
-            // "</div>"; 
-
-            htmlImage2 +="<section class='imagemSessao' onclick='zoomImage("+foto.fotografiaID+")'>"+
+            htmlImage +="<section class='imagemSessao' onclick='zoomImage("+foto.fotografiaID+")'>"+
             foto.imagem +
             "</section>"+
             "<div id='"+foto.fotografiaID+"' class='w3-modal' onclick='sairZoom("+foto.fotografiaID+")'>"+
@@ -52,7 +64,7 @@ window.onload = async function() {
               "</div>"+
             "</div>";
         }
-    elemFotos.innerHTML = htmlImage2;
+    elemFotos.innerHTML = htmlImage;
 
 }
 
@@ -67,4 +79,72 @@ function sairZoom(fotografiaID){
 async function logOut() {
     await sessionStorage.removeItem("userID");
     window.location = "sessaoFotos.html";
+}
+
+async function addReport() {
+    let sessaoFotos_id = sessionStorage.getItem("sessaoID")
+    let user_id = sessionStorage.getItem("userID")
+    let review = {
+        user_id: user_id,
+        sessaoFotos_id: sessaoFotos_id
+    }
+    console.log(review);
+    try {
+        let result = await $.ajax({
+            url: "/api/users/report/sessao",
+            method: "post",
+            dataType: "json",
+            data: JSON.stringify(review),
+            contentType: "application/json"
+        });
+        swal("Report feito com sucesso!");
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+async function addFavorito() {
+    let sessaoFotosID = sessionStorage.getItem("sessaoID")
+    let userID = sessionStorage.getItem("userID")
+    let favorito = {
+        user_id: userID,
+        sessao_id: sessaoFotosID
+    }
+    console.log(favorito);
+    try {
+        let result = await $.ajax({
+            url: "/api/users/addFav/sessao",
+            method: "post",
+            dataType: "json",
+            data: JSON.stringify(favorito),
+            contentType: "application/json"
+        });
+        swal(result);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+async function loadCategoriasArte() {
+    let arteID = sessionStorage.getItem("arteID");
+    try {
+        let categorias = await $.ajax({
+            url: "/api/sessoes/categorias/arte/" + arteID,
+            method: "get",
+            dataType: "json",
+        });
+        showCategoriasArte(categorias)
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+async function showCategoriasArte(categorias) {
+    let html="";
+    for (let categoria of categorias) {
+        html +=
+            "<b>"+categoria.categoria_nome+"</b>";
+            
+    }
+    document.getElementById("categoriasArte").innerHTML = html;
 }

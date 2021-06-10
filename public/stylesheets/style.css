@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
 
 *{
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif !important;
 }
 
 body {
@@ -120,10 +120,6 @@ input[type=button]:hover {
   box-shadow: 4px 4px 19px -1px rgba(0, 0, 0, 0.60);
 }
 
-.sessao{
-  font-size: 20px;
-  color: white;
-}
 
 .infotext {
   text-align: center;

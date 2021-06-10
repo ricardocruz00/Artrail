@@ -48,17 +48,33 @@ module.exports.getFavorites = async function (idUser) {
     }
 }
 
+//com erro algures // esta a colocar sessao_id e user_id como null, null
 module.exports.addFavorites = async function (favorito) {
     try{
-        let sqlFavVerf = "select favoritos.sessao_id, favoritos.user_id from favoritos where favoritos.sessao_id=? AND favoritos.user_id = ?;";
-        let favVerf = await pool.query(sqlFavVerf, favorito.sessao_id, favorito.user_id);
-        if(favVerf.length ==0) {
-            let sql = "insert into favoritos (isFav,sessao_id,user_id) values (?,?,?);";
-            let result = await pool.query(sql, [ favorito.isFav, favorito.sessao_id, favorito.user_id]);
-            return { status: 200, data: result };
+        let sqlFavVerf = "select isFav, sessao_id, user_id from favoritos where sessao_id= ? AND user_id = ?;";
+        let favVerf = await pool.query(sqlFavVerf, [favorito.sessao_id, favorito.user_id]);
+        console.log(JSON.stringify(favVerf));
+        if(favVerf.length == 0) {
+            let sql = "insert into favoritos (isFav,sessao_id,user_id) values (1,?,?);";
+            let result = await pool.query(sql, [favorito.sessao_id, favorito.user_id]);
+            return { status: 200, msg: "Inserted" };
         }
-        else
-            let sql = "UPDATE favoritos SET IsFav= 1 WHERE favoritos.id=?;";
+        else if(favVerf.length !== 0 && favVerf.isFav == 1) {
+            return { status: 200, msg: "Esta sessão já se encontra na lista de favoritos" };
+        }
+        else{
+            var sqlUpdate = "UPDATE favoritos SET IsFav= 1 WHERE sessao_id= ? AND user_id = ?;";
+            let resultUpdate = await pool.query(sqlUpdate, [favorito.sessao_id, favorito.user_id]);
+            return { status: 200, msg: "Updated" };}
+    } catch (err) {
+        console.log(err); 
+        return { status: 500, data: err };
+    }
+ }
+
+module.exports.removeFavorites = async function (favoritoID) {
+    try {
+            let sql = "UPDATE favoritos SET IsFav= 0 WHERE favoritos.id= ?;";
             let result = await pool.query(sql, favoritoID);
             return { status: 200, data: result };
     } catch (err) {
@@ -67,11 +83,17 @@ module.exports.addFavorites = async function (favorito) {
     }
 }
 
-module.exports.removeFavorites = async function (favoritoID) {
+module.exports.newReport = async function (review) {
     try {
-            let sql = "UPDATE favoritos SET IsFav= 0 WHERE favoritos.id=?;";
-            let result = await pool.query(sql, favoritoID);
+            let sqlReportVerf = "SELECT * FROM review WHERE sessaoFotos_id = ? AND user_id = ? AND isReported = 1";
+            let reportVerf = await pool.query(sqlReportVerf, [review.sessaoFotos_id, review.user_id]);
+                if(reportVerf.length == 0) {
+            let sql = "insert into review (isReported, sessaoFotos_id, review.user_id) values (1,?,?)";
+            let result = await pool.query(sql, [review.sessaoFotos_id, review.user_id]);
             return { status: 200, data: result };
+        }
+        else
+            return null;
     } catch (err) {
         console.log(err);
         return { status: 500, data: err };

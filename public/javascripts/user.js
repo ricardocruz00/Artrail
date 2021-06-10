@@ -6,7 +6,7 @@ window.onload = async function () {
         nomeUser.innerHTML = "<a>" + sessionStorage.getItem("nome_user") + "</a>";
         let logOut = document.getElementById("logOut");
         logOut.innerHTML = "<li style='float:right'><a onclick='logOut()'>LogOut</a></li>";
-        nomeUser.innerHTML = "<a href='userPage.html'>" + sessionStorage.getItem("nome_user") + "</a>";
+        nomeUser.innerHTML = "<a href='userPageSessoes.html'>" + sessionStorage.getItem("nome_user") + "</a>";
         let userSection = document.getElementById("usernameSection");
         userSection.innerHTML = "<p class='nome'>" + sessionStorage.getItem("nome_user") + "</p>";
     }
@@ -64,4 +64,9 @@ async function removerFavorito(favoritosID) {
        } catch (err) {
          console.log(err);
        }
+}
+
+async function logOut() {
+    await sessionStorage.removeItem("userID");
+    window.location = "index.html";
 }

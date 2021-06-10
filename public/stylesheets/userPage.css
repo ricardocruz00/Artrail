@@ -3,7 +3,7 @@
 
 * {
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif !important;
 }
 
 body {
@@ -101,6 +101,7 @@ body {
     background-color: rgba(0, 0, 0, 0.185);
     color: white;
     border: none;
+    padding-left: 14px !important;
 }
 
 
@@ -159,11 +160,24 @@ input[type=button]:active {
     flex-basis: 100%;
 }
 
-.glyphicon-heart{
-    color: white;
-    font-size: 25px;
+.icon{
+    font-size: 28px;
     flex-basis: 100%;
     text-align: end;
+
+}
+
+.icon a{
+    color: white !important;
+    font-size: 31px;
+    flex-basis: 100%;
+    text-align: end;
+
+}
+
+.icon a:hover{
+    color: rgb(92, 41, 212) !important;
+    text-decoration: none;
 }
 
 li a:hover{

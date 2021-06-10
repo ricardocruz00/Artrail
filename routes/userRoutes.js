@@ -34,9 +34,10 @@ router.get('/favoritos/:id', async function(req, res, next) {
 
 
 /*add favorito (alterar se tiver erros)*/
-router.post('/addFav',async function(req,res,next) {
-  let favorito = req.query;
+router.post('/addFav/sessao',async function(req,res,next) {
+  let favorito = req.body;
   let result = await userModel.addFavorites(favorito);
+  console.log("routes "+JSON.stringify(favorito));
   res.status(result.status).
     send(result.data);
 });
@@ -47,6 +48,16 @@ router.put('/removeFav/:favoritoID', async function(req, res, next) {
   let favoritoID = req.params.favoritoID;
   let result = await userModel.removeFavorites(favoritoID);
   res.status(result.status).send(result.data);
+});
+
+
+/* add report */
+router.post('/report/sessao', async function (req, res, next) {
+  let review = req.body;
+  let result = await userModel.newReport(review);
+  console.log("routes "+JSON.stringify(review));
+  res.status(result.status).
+    send(result.data);
 });
 
 module.exports = router;

@@ -21,14 +21,38 @@ module.exports.getSessoes = async function (idArte) {
     }
 }
 
+module.exports.getAllCategorias = async function () {
+    try {
+        let sql = "SELECT id as categoriaID, categoria_nome FROM categoria ORDER BY categoria_nome";
+        let categorias = await pool.query(sql,);
+        return { status: 200, data: categorias };
+    } catch (err) {
+        console.log(err);
+        return { status: 500, data: err };
+    }
+}
+
+module.exports.getCategoriasArte = async function (idArte) {
+    try {
+        let sql = "SELECT categoria_nome FROM categoria INNER JOIN arte_categoria ON categoria.id = arte_categoria.categoria_id INNER JOIN arte ON arte.id = arte_categoria.arte_id WHERE arte.id = ?";
+        let categorias = await pool.query(sql,[idArte]);
+        return { status: 200, data: categorias };
+    } catch (err) {
+        console.log(err);
+        return { status: 500, data: err };
+    }
+}
+
 module.exports.getOne = async function(idSessao) {
     try {
-        let sql = "SELECT nome_artista, nome, descricao, DATE_FORMAT(sessaoFotos.timestamp, '%d/%m/%Y às %H:%i') as timestamp, estado_conservacao, nome_user FROM sessaoFotos INNER JOIN user ON sessaoFotos.user_id = user.id INNER JOIN estadoConservacaoArte ON sessaoFotos.estadoArte_id = estadoConservacaoArte.id INNER JOIN arte ON arte.id = sessaoFotos.arte_id INNER JOIN arte_artista ON arte.id = arte_artista.arte_id INNER JOIN artista ON artista.id = arte_artista.artista_id WHERE sessaoFotos.id = ?";
-        let sessoes = await pool.query(sql,[idSessao]);
+        let sqlInfo = "SELECT nome_artista, nome, descricao, DATE_FORMAT(sessaoFotos.timestamp, '%d/%m/%Y às %H:%i') as timestamp, estado_conservacao, nome_user, user.id as userID FROM sessaoFotos INNER JOIN user ON sessaoFotos.user_id = user.id INNER JOIN estadoConservacaoArte ON sessaoFotos.estadoArte_id = estadoConservacaoArte.id INNER JOIN arte ON arte.id = sessaoFotos.arte_id INNER JOIN arte_artista ON arte.id = arte_artista.arte_id INNER JOIN artista ON artista.id = arte_artista.artista_id WHERE sessaoFotos.id = ?";
+        let sessoes = await pool.query(sqlInfo,[idSessao]);
+        let sqlReview = "SELECT COUNT(review.id) as nReports FROM review WHERE sessaoFotos_id = ? AND isReported = 1";
+        let reports = await pool.query(sqlReview,[idSessao]);
         //só da para um artista
         let sqlImage = "SELECT imagem, fotografia.id as fotografiaID FROM fotografia INNER JOIN sessaoFotos ON fotografia.fotografiaInfo_id = sessaoFotos.id WHERE sessaoFotos.id = ?"
         let fotos = await pool.query(sqlImage,[idSessao]); 
-        let sessao = {sessaoInfo: sessoes[0],fotos: fotos } ;
+        let sessao = {sessaoInfo: sessoes[0],fotos: fotos, reports: reports[0] } ;
         
         return {status:200, data: sessao};
     } catch(err) {

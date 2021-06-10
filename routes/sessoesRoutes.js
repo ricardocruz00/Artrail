@@ -10,7 +10,20 @@ router.get('/:id', async function(req, res, next) {
        send(result.data);
 });
 
-/* GET one sessão */
+// Get all categorias
+router.get('/categorias/all', async function(req, res, next) {
+  let categorias = req.query;  
+  let result = await sessionModel.getAllCategorias(categorias);
+    res.status(result.status).
+       send(result.data);
+});
+
+router.get('/categorias/arte/:id', async function(req, res, next) {
+  let idArte = req.params.id;  
+  let result = await sessionModel.getCategoriasArte(idArte);
+    res.status(result.status).
+       send(result.data);
+});
 
 // /api/sessoes/info/2
 router.get('/info/:id', async function(req, res, next) {

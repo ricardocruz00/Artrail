@@ -1,13 +1,14 @@
 window.onload = async function() {
     let arteID = sessionStorage.getItem("arteID");
     let nome_artista = sessionStorage.getItem("nome_artista");
+    loadCategoriasLista();
     
     if (sessionStorage.getItem("userID") !== null) {
         let nomeUser = document.getElementById("nomeUser");
         nomeUser.innerHTML = "<a>" + sessionStorage.getItem("nome_user") + "</a>";
         let logOut = document.getElementById("logOut");
         logOut.innerHTML = "<li style='float:right'><a onclick='logOut()'>LogOut</a></li>";
-        nomeUser.innerHTML = "<a href='userPage.html'>" + sessionStorage.getItem("nome_user") + "</a>";
+        nomeUser.innerHTML = "<a href='userPageSessoes.html'>" + sessionStorage.getItem("nome_user") + "</a>";
     }
 
     let sessoes = await $.ajax({
@@ -55,4 +56,35 @@ function showSessao(sessaoID) {
 async function logOut() {
     await sessionStorage.removeItem("userID");
     window.location = "sessoes.html";
+}
+
+async function loadCategoriasLista() {
+
+    let elemCategorias = document.getElementById("categorias");
+        try {
+            let categorias = await $.ajax({
+                url: "/api/sessoes/categorias/all",
+                method: "get",
+                dataType: "json"
+            });
+           // console.log(JSON.stringify(categorias));
+            showCategorias(categorias);
+        } catch (err) {
+            console.log(err);
+            elemCategorias.innerHTML = "<h1> Página não está disponível</h1>" +
+                "<h2> Por favor tente mais tarde</h2>";
+        }
+}
+
+async function showCategorias(categorias){
+    if (sessionStorage.getItem("userID") !== null) {
+        let htmlLabel = " <a>Give this Art Categories</a>"
+        let html = "";
+        for(let categoria of categorias) {
+            console.log(JSON.stringify(categoria.categoria_nome));
+            html += "<input type='button' class='categoriaB' value='"+categoria.categoria_nome+"' onclick='adicionarCategoria("+categoria.categoriaID+")'></input>";
+        }
+        document.getElementById("categorias").innerHTML = html;
+        document.getElementById("label").innerHTML = htmlLabel;
+}
 }
