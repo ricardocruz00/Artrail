@@ -31,7 +31,7 @@ module.exports.newUser = async function (user) {
 
 module.exports.getFavorites = async function (idUser) {
     try {
-        let sql = "select favoritos.id as favoritosID, descricao, DATE_FORMAT(sessaoFotos.timestamp, '%d/%m/%Y às %H:%i') as timestamp, sessao_id, imagem "+
+        let sql = "select favoritos.id as favoritosID, descricao, DATE_FORMAT(sessaoFotos.timestamp, '%d/%m/%Y, %H:%i') as timestamp, sessao_id, imagem "+
         "FROM favoritos "+ 
         "INNER JOIN user ON user.id = favoritos.user_id "+
         "INNER JOIN sessaoFotos ON sessaoFotos.id = favoritos.sessao_id "+

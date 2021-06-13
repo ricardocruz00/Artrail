@@ -47,3 +47,4 @@ function showSessoes(arteID,nome_artista) {
     sessionStorage.setItem("nome_artista",nome_artista);
     window.location = "sessoes.html";
 }
+

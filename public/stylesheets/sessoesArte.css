@@ -11,12 +11,13 @@
   margin-top: 10px;
   -webkit-box-shadow: 4px 4px 19px -1px rgba(0, 0, 0, 0.60); 
   box-shadow: 4px 4px 19px -1px rgba(0, 0, 0, 0.60);
-  width: 30%;
+  background-color: rgba(255, 255, 255, 0.253);  
+  backdrop-filter: blur(9px);
+  border-radius: 12px; 
+  width: 40%;
   height: auto;
   z-index: 0;
-  background-color: rgba(255, 255, 255, 0.253);  
-    backdrop-filter: blur(9px);
-    border-radius: 12px;
+ 
 }
 
 #categorias{
@@ -58,4 +59,44 @@ input[type=button].categoriaB:hover  {
   background-color: transparent !important;
   font-weight: bold;
   margin-bottom: 5px;
+}
+
+.filtros{
+  margin: auto;
+  width: 80%;
+  margin-top: 50px;
+  margin-bottom: -50px;
+  height: auto;
+  display: block;
+}
+
+#labelEstados {
+  font-size: 25px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.estadoB{
+  margin-right: 10px;
+}
+
+input[type=button].estadoB {
+  border: none;
+  color: rgb(255, 255, 255);
+  border-radius: 15px;
+  padding-top: 8px;
+  padding-bottom: 6px;
+  padding-right: 15px;
+  padding-left: 15px;
+  font-size: 12px;
+  background-color: rgb(92, 41, 212);
+  text-align: center;
+  cursor: pointer;
+}
+
+input[type=button].estadoB:hover  {
+  color:rgb(92, 41, 212) ;
+  background-color: rgb(255, 255, 255);
+  -webkit-box-shadow: 4px 4px 19px -1px rgba(0, 0, 0, 0.60); 
+  box-shadow: 4px 4px 19px -1px rgba(0, 0, 0, 0.60);
 }

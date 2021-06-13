@@ -35,11 +35,11 @@ async function showFavoritos(favoritos) {
         html +=
             "<figure class='img__wrap'>" +
             "<section class='favImage'>"+ favorito.imagem +"</section>" +
-            "<input type='button' class='removeFavB' value='✖ Retirar' onclick='removerFavorito(" + favorito.favoritosID + ")'>"+
+            "<input type='button' class='removeFavB' value='✖ Remove' onclick='removerFavorito(" + favorito.favoritosID + ")'>"+
             "<div class='img__description_layer' onclick='showSessao(" + favorito.sessao_id + ")'>" +
             "<p class='img__description'>" +
             "" + favorito.timestamp + "<br>" +
-            "Descrição: " + favorito.descricao + "<br>" +
+            "Description: " + favorito.descricao + "<br>" +
             "</p>" +
             "</div>"+
             "</figure>";

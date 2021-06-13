@@ -24,31 +24,31 @@ window.onload = async function() {
         if (sessao.reports.nReports !== 1){
     document.getElementById("sessao").innerHTML =
         "<p class='nomeArte'>"+sessao.sessaoInfo.nome+"</p>"+
-        "<p>Artista: "+sessao.sessaoInfo.nome_artista+"</p>"+
-        "<p>Descrição: "+sessao.sessaoInfo.descricao+"</p>"+
-        "<p>Estado de Conservação: "+sessao.sessaoInfo.estado_conservacao+"</p>"+
+        "<p>Artist: "+sessao.sessaoInfo.nome_artista+"</p>"+
+        "<p>Description: "+sessao.sessaoInfo.descricao+"</p>"+
+        "<p>Conservation state: "+sessao.sessaoInfo.estado_conservacao+"</p>"+
         "<p>"+sessao.sessaoInfo.timestamp+"</p>"+
-        "<p>"+sessao.reports.nReports+" reports feito a esta sessão</p>";
+        "<p>"+sessao.reports.nReports+" reports were made to this photo session</p>";
         
         if (sessionStorage.getItem("userID") !== null) {
             document.getElementById("sessao").innerHTML +=
-        "<section class='report' id='report'><input type='button' value='Reportar' onclick='addReport()'></section>"+
-        "<section class='fav' id='fav'><input type='button' value='Adicionar aos Favoritos' onclick='addFavorito()'></section>";
+        "<section class='report' id='report'><input type='button' value='Report' onclick='addReport()'></section>"+
+        "<section class='fav' id='fav'><input type='button' value='Add to the Favorites List' onclick='addFavorito()'></section>";
         }
 }
         else{
             document.getElementById("sessao").innerHTML =
         "<p class='nomeArte'>"+sessao.sessaoInfo.nome+"</p>"+
-        "<p>Artista: "+sessao.sessaoInfo.nome_artista+"</p>"+
-        "<p>Descrição: "+sessao.sessaoInfo.descricao+"</p>"+
-        "<p>Estado de Conservação: "+sessao.sessaoInfo.estado_conservacao+"</p>"+
+        "<p>Artist: "+sessao.sessaoInfo.nome_artista+"</p>"+
+        "<p>Description: "+sessao.sessaoInfo.descricao+"</p>"+
+        "<p>Conservation state: "+sessao.sessaoInfo.estado_conservacao+"</p>"+
         "<p>"+sessao.sessaoInfo.timestamp+"</p>"+
-        "<p>"+sessao.reports.nReports+" report feito a esta sessão</p>";
+        "<p>"+sessao.reports.nReports+" 1 report was made to this photo session</p>";
         
         if (sessionStorage.getItem("userID") !== null) {
             document.getElementById("sessao").innerHTML +=
-        "<section class='report' id='report'><input type='button' value='Reportar' onclick='addReport()'></section>"+
-        "<section class='fav' id='fav'><input type='button' value='Adicionar aos Favoritos' onclick='addFavorito()'></section>";
+        "<section class='report' id='report'><input type='button' value='Report' onclick='addReport()'></section>"+
+        "<section class='fav' id='fav'><input type='button' value='Add to the Favorites List' onclick='addFavorito()'></section>";
         }
         }
 
@@ -97,7 +97,7 @@ async function addReport() {
             data: JSON.stringify(review),
             contentType: "application/json"
         });
-        swal("Report feito com sucesso!");
+        swal("Report done successfully!");
     } catch (err) {
         console.log(err);
     }
@@ -119,7 +119,10 @@ async function addFavorito() {
             data: JSON.stringify(favorito),
             contentType: "application/json"
         });
-        swal(result);
+        swal("This photography session was added to the favorites list!", {
+            buttons: false,
+            timer: 2500,
+          });
     } catch (err) {
         console.log(err);
     }

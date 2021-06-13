@@ -21,20 +21,6 @@ module.exports.getAll = async function () {
     }
 }
 
-// module.exports.getImagemArte = async function () {
-//     try {
-//         let sql = "SELECT arte.id, fotografia.imagem, sessaoFotos.timestamp FROM arte INNER JOIN sessaoFotos ON arte.id = sessaoFotos.arte_id INNER JOIN fotografia ON sessaoFotos.id = fotografia.fotografiaInfo_id";
-//         let imagens = await pool.query(sql);
-//         let imagensLista = [];
-//         for(imagem of imagens){
-
-//         }
-//         return { status: 200, data: imagens };
-//     }catch (err) {
-//         console.log(err);
-//         return { status: 500, data: err };
-//     }
-// }
 
 module.exports.newCategoriaArte = async function (categoriaArte) {
     try {

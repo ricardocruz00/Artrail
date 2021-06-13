@@ -38,8 +38,8 @@ async function loadArtes() {
 async function showArtesMapa(arteID, arteNome, arteArtista, arteImagem) {
     let html = "";
     html+="<section class='fotoArteMap' style='cursor: pointer;' onclick='showSessoes("+arteID+")'>" + arteImagem + "</section>"+
-    "<p>Nome da arte: "+arteNome+"</p>"+
-    "<p>Artista: "+arteArtista+"</p>";
+    "<p>Art name: "+arteNome+"</p>"+
+    "<p>Artist: "+arteArtista+"</p>";
      
 
     document.getElementById("infoC").innerHTML = html;

@@ -6,9 +6,9 @@ async function checkLogin() {
         password: password
     } 
     if (userName.length == 0)
-        swal("Introduza um Username ", "");
+        swal("Enter a username ", "");
     else if (password.length == 0)
-        swal("Introduza uma password ", "");
+        swal("Enter a password ", "");
     else {
         try {
             let dados = await $.ajax({
@@ -21,13 +21,13 @@ async function checkLogin() {
             });
             console.log(dados);
             if (dados[0] != null) {
-                await swal("Sessão Iniciada com sucesso!", "");
+                await swal("User loged in!", "");
                 sessionStorage.setItem("nome_user", dados[0].nome_user);
                 sessionStorage.setItem("userID", dados[0].userID);
                 window.location = "index.html";
             }
             else
-            await swal("Username ou password incorreto!", "");;
+            await swal("Username or password incorrect!", "");;
         } catch (err) {
            
             console.log(err);
@@ -42,11 +42,11 @@ async function addUSer() {
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
     if (nome_user.length == 0)
-        swal("Introduza um nome ", "");
+        swal("Enter a name ", "");
     else if (newUsername.length == 0)
-        swal("Introduza um username ", "");
+        swal("Enter a username ", "");
     else if (password.length == 0)
-        swal("Introduza uma password ", "");
+        swal("Enter a password ", "");
     else {
         let user = {
             nome_user: nome_user,
@@ -63,9 +63,9 @@ async function addUSer() {
                 contentType: "application/json"
             });
             if (result == null) {
-                swal("Username ja se encontra utilizado, por favor tente novamente com um username diferente!", "");
+                swal("This username is already taken, please try again with a different username", "");
             }
-            await swal("User registado")
+            await swal("User successfully registered")
             window.location = "login.html";
         } catch (err) {
             console.log(err);

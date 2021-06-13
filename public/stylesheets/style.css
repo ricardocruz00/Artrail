@@ -120,6 +120,13 @@ input[type=button]:hover {
   box-shadow: 4px 4px 19px -1px rgba(0, 0, 0, 0.60);
 }
 
+.swal-button {
+  background-color: rgb(92, 41, 212) !important;
+}
+
+.swal-button:hover {
+  background-color: rgb(68, 34, 148) !important;
+}
 
 .infotext {
   text-align: center;

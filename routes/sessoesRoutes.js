@@ -25,6 +25,14 @@ router.get('/categorias/arte/:id', async function(req, res, next) {
        send(result.data);
 });
 
+// Get all estados
+router.get('/estados/all', async function(req, res, next) {
+  let estados = req.query;  
+  let result = await sessionModel.getAllEstados(estados);
+    res.status(result.status).
+       send(result.data);
+});
+
 // /api/sessoes/info/2
 router.get('/info/:id', async function(req, res, next) {
   let idSessao = req.params.id;  
