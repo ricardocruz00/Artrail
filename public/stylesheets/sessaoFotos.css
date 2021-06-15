@@ -134,6 +134,7 @@ b{
     cursor: default;
     background-color: rgb(92, 41, 212);
     margin: 10px;
+    margin-right: 0px;
     border-radius: 20px;
     color: white;
     font-size: 13px;

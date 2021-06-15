@@ -43,7 +43,7 @@ window.onload = async function() {
         "<p>Description: "+sessao.sessaoInfo.descricao+"</p>"+
         "<p>Conservation state: "+sessao.sessaoInfo.estado_conservacao+"</p>"+
         "<p>"+sessao.sessaoInfo.timestamp+"</p>"+
-        "<p>"+sessao.reports.nReports+" 1 report was made to this photo session</p>";
+        "<p>"+sessao.reports.nReports+" report was made to this photo session</p>";
         
         if (sessionStorage.getItem("userID") !== null) {
             document.getElementById("sessao").innerHTML +=

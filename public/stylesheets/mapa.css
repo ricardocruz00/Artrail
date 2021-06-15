@@ -97,3 +97,7 @@ info img{
   margin-top: 20px;
   border-radius: 9px;
 }
+
+.leaflet-popup-content{
+  width: fit-content !important;
+}
