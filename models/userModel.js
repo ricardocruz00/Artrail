@@ -48,7 +48,25 @@ module.exports.getFavorites = async function (idUser) {
     }
 }
 
-//com erro algures // esta a colocar sessao_id e user_id como null, null
+module.exports.getSessoesUser = async function (idUser) {
+    try {
+        let sql = "select descricao, DATE_FORMAT(sessaoFotos.timestamp, '%d/%m/%Y, %H:%i') as timestamp, sessaoFotos.id as sessaoID, imagem "+
+        "FROM user "+
+        "INNER JOIN sessaoFotos ON user.id = sessaoFotos.user_id "+
+        "INNER JOIN fotografia ON sessaoFotos.id = fotografia.fotografiaInfo_id "+
+        "where user.id=? AND fotografia.id in (select max(fotografia.id) "+
+                            "FROM sessaoFotos "+
+                            "INNER JOIN fotografia ON sessaoFotos.id = fotografia.fotografiaInfo_id "+
+                            "group by sessaoFotos.id )";
+        let sessoesUser = await pool.query(sql, [idUser]);
+        return { status: 200, data: sessoesUser };
+    } catch (err) {
+        console.log(err);
+        return { status: 500, data: err };
+    }
+}
+
+
 module.exports.addFavorites = async function (favorito) {
     try{
         let sqlFavVerf = "select isFav, sessao_id, user_id from favoritos where sessao_id= ? AND user_id = ?;";

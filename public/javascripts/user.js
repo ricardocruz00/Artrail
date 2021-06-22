@@ -1,5 +1,6 @@
 window.onload = async function () {
     loadFavoritos()
+    loadSuasSessoes()
 
     if (sessionStorage.getItem("userID") !== null) {
         let nomeUser = document.getElementById("nomeUser");
@@ -46,6 +47,41 @@ async function showFavoritos(favoritos) {
             
     }
     document.getElementById("favoritos").innerHTML = html;
+}
+
+async function loadSuasSessoes() {
+    userID = sessionStorage.getItem("userID")
+    console.log(userID);
+    try {
+        let sessoesUser = await $.ajax({
+            url: "/api/users/sessoesUser/" + userID,
+            method: "get",
+            dataType: "json",
+        });
+        showSuasSessoes(sessoesUser)
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+async function showSuasSessoes(sessoesUser) {
+    //console.log(JSON.stringify(sessaoUsers));
+    let html = "";
+    for (let sessaoUser of sessoesUser) {
+        console.log(JSON.stringify(sessaoUser.descricao));
+        html +=
+            "<figure class='img__wrap'>" +
+            "<section class='favImage' onclick='showSessao(" + sessaoUser.sessaoID + ")' >"+ sessaoUser.imagem +"</section>" +
+            "<div class='.img__description_layer' >" +
+            "<p class='img__description'>" +
+            "" + sessaoUser.timestamp + "<br>" +
+            "Description: " + sessaoUser.descricao + "<br>" +
+            "</p>" +
+            "</div>"+
+            "</figure>";
+            
+    }
+    document.getElementById("suasSessoes").innerHTML = html;
 }
 
 function showSessao(sessaoID) {

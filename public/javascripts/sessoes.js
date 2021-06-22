@@ -151,6 +151,25 @@ async function showEstados(estados) {
     document.getElementById("labelEstados").innerHTML = htmlLabel;
 }
 
-// async function filtrarSessoes(estadoID) {
-    
-// }
+async function filtrarSessoes(estadoID) {
+    let arteID = sessionStorage.getItem("arteID");
+    let sessaoEstado = {
+        arteID: arteID,
+        estadoID: estadoID
+    }
+    try {
+        let sessoesFiltradas = await $.ajax({
+            url: "/api/sessoes/sessoesEstado/filtrado/",
+            method: "get",
+            dataType: "json",
+            data: sessaoEstado,
+            contentType: "application/json"
+
+        });
+        showSessoes(sessoesFiltradas);
+        console.log(sessoesFiltradas);
+        show
+    } catch (err) {
+        console.log(err);
+    }
+}

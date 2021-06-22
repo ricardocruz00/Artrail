@@ -10,6 +10,14 @@ router.get('/:id', async function(req, res, next) {
        send(result.data);
 });
 
+/* GET sessões filtradas por estado */
+router.get('/sessoesEstado/filtrado/', async function (req, res, next) {
+  let sessaoEstado = req.query; 
+  let result = await sessionModel.getSessoesFiltradas(sessaoEstado);
+    res.status(result.status).
+       send(result.data);
+});
+
 // Get all categorias
 router.get('/categorias/all', async function(req, res, next) {
   let categorias = req.query;  

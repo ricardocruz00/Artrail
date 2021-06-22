@@ -72,23 +72,23 @@ module.exports.getOne = async function(idSessao) {
     }
 }
 
-// module.exports.getSessoesFiltradas = async function (estadoSessao) {
-//     try {
-//         let sql = "select nome, user.nome_user, descricao, sessaoFotos.id as sessaoID1, imagem, DATE_FORMAT(sessaoFotos.timestamp, '%d/%m/%Y às %H:%i') as timestamp, estado_conservacao, nome_artista "+ 
-//         "FROM arte INNER JOIN sessaoFotos ON arte.id = sessaoFotos.arte_id "+ 
-//         "INNER JOIN fotografia ON sessaoFotos.id = fotografia.fotografiaInfo_id "+ 
-//         "INNER JOIN estadoConservacaoArte ON sessaoFotos.estadoArte_id = estadoConservacaoArte.id "+ 
-//         "INNER JOIN user ON user.id = sessaoFotos.user_id "+ 
-//         "INNER JOIN arte_artista ON arte_artista.arte_id = arte.id "+ 
-//         "INNER JOIN artista ON artista.id = arte_artista.artista_id WHERE arte.id = ? AND estadoConservacaoArte.id = ? AND "+
-//             "fotografia.id in (select max(fotografia.id) "+
-//             "FROM sessaoFotos "+
-//             "INNER JOIN fotografia ON sessaoFotos.id = fotografia.fotografiaInfo_id "+
-//             "group by sessaoFotos.id )";
-//         let sessoes = await pool.query(sql,[estadoSessao.arteID, estadoSessao.estadoConservacaoArteID]);
-//         return { status: 200, data: sessoes };
-//     } catch (err) {
-//         console.log(err);
-//         return { status: 500, data: err };
-//     }
-// }
+module.exports.getSessoesFiltradas = async function (sessaoEstado) {
+    try {
+        let sql = "select nome, user.nome_user, descricao, sessaoFotos.id as sessaoID1, imagem, DATE_FORMAT(sessaoFotos.timestamp, '%d/%m/%Y às %H:%i') as timestamp, estado_conservacao, nome_artista "+ 
+        "FROM arte INNER JOIN sessaoFotos ON arte.id = sessaoFotos.arte_id "+ 
+        "INNER JOIN fotografia ON sessaoFotos.id = fotografia.fotografiaInfo_id "+ 
+        "INNER JOIN estadoConservacaoArte ON sessaoFotos.estadoArte_id = estadoConservacaoArte.id "+ 
+        "INNER JOIN user ON user.id = sessaoFotos.user_id "+ 
+        "INNER JOIN arte_artista ON arte_artista.arte_id = arte.id "+ 
+        "INNER JOIN artista ON artista.id = arte_artista.artista_id WHERE arte.id = "+ sessaoEstado.arteID +" AND estadoConservacaoArte.id = "+ sessaoEstado.estadoID +" AND "+
+            "fotografia.id in (select max(fotografia.id) "+
+            "FROM sessaoFotos "+
+            "INNER JOIN fotografia ON sessaoFotos.id = fotografia.fotografiaInfo_id "+
+            "group by sessaoFotos.id )";
+        let sessoes = await pool.query(sql);
+        return { status: 200, data: sessoes };
+    } catch (err) {
+        console.log(err);
+        return { status: 500, data: err };
+    }
+}

@@ -31,9 +31,15 @@ router.get('/favoritos/:id', async function(req, res, next) {
        send(result.data);
 });
 
+/* GET Sessoes do User */
+router.get('/sessoesUser/:id', async function(req, res, next) {
+  let idUser = req.params.id;  
+  let result = await userModel.getSessoesUser(idUser);
+    res.status(result.status).
+       send(result.data);
+});
 
-
-/*add favorito (alterar se tiver erros)*/
+/* add favorito */
 router.post('/addFav/sessao',async function(req,res,next) {
   let favorito = req.body;
   let result = await userModel.addFavorites(favorito);
@@ -43,7 +49,7 @@ router.post('/addFav/sessao',async function(req,res,next) {
 });
 
 
-/*remove favorito (alterar se tiver erros)*/
+/* remove favorito */
 router.put('/removeFav/:favoritoID', async function(req, res, next) {
   let favoritoID = req.params.favoritoID;
   let result = await userModel.removeFavorites(favoritoID);
