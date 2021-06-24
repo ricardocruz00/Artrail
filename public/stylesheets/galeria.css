@@ -64,6 +64,7 @@ figure {
 }
   
 .img__description {
+    padding: 16px;
     transition: .2s;
     transform: translateY(1em);
     text-align: center;

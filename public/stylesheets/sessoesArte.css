@@ -100,3 +100,8 @@ input[type=button].estadoB:hover  {
   -webkit-box-shadow: 4px 4px 19px -1px rgba(0, 0, 0, 0.60); 
   box-shadow: 4px 4px 19px -1px rgba(0, 0, 0, 0.60);
 }
+
+input[type=button].estadoB:focus  {
+  color:rgb(92, 41, 212) ;
+  background-color: rgb(255, 255, 255);
+}

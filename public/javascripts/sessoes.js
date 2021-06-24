@@ -86,7 +86,7 @@ async function loadCategoriasLista() {
 
 async function showCategorias(categorias) {
     if (sessionStorage.getItem("userID") !== null) {
-        let htmlLabel = " <a>Give this Art Categories</a>"
+        let htmlLabel = " <a>Give this Art Tags</a>"
         let html = "";
         for (let categoria of categorias) {
             console.log(JSON.stringify(categoria.categoria_nome));
@@ -168,7 +168,6 @@ async function filtrarSessoes(estadoID) {
         });
         showSessoes(sessoesFiltradas);
         console.log(sessoesFiltradas);
-        show
     } catch (err) {
         console.log(err);
     }

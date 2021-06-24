@@ -75,7 +75,7 @@ async function showSuasSessoes(sessoesUser) {
             "<div class='.img__description_layer' >" +
             "<p class='img__description'>" +
             "" + sessaoUser.timestamp + "<br>" +
-            "Description: " + sessaoUser.descricao + "<br>" +
+            // "Description: " + sessaoUser.descricao + "<br>" +
             "</p>" +
             "</div>"+
             "</figure>";

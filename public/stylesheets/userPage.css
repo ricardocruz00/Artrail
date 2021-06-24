@@ -34,18 +34,17 @@ body {
     object-fit: cover;
     width:270px;
     height:270px;
-    /* border-radius: 9px; */
-    -webkit-box-shadow: 4px 4px 19px -1px rgba(0,0,0,0.76); 
-    box-shadow: 4px 4px 19px -1px rgba(0,0,0,0.76);
     margin: 30px;
     margin-bottom: 14px;
     cursor: pointer;
+    border-radius: 9px;
 }
 
 .favImage img {
     object-fit: cover;
     width:270px;
     height:270px;
+    border-radius: 9px;
 }
 
 
@@ -55,6 +54,7 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
   
 .img__description_layer {
@@ -70,11 +70,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* transition effect. not necessary */
     transition: opacity .2s, visibility .2s;
     margin: 30px; 
     margin-bottom: 50px;
     cursor: pointer;
+    text-align: center;
+    border-radius: 9px;
 }
   
 .img__wrap:hover .img__description_layer {
@@ -83,11 +84,14 @@ body {
 }
   
 .img__description {
+    padding: 16px;
     transition: .2s;
     transform: translateY(1em);
     text-align: center;
     font-size: 14px;
     cursor: pointer;
+    padding-top: 0px !important;
+    border-radius: 9px;
 }
   
 .img__wrap:hover .img__description {
@@ -96,13 +100,14 @@ body {
 
 
 .removeFavB{
-    width: 90px;
+    width: 100px !important;
     text-align: center;
     font-size: 13px;
     background-color: rgba(0, 0, 0, 0.185);
     color: white;
     border: none;
     padding-left: 14px !important;
+    margin-left: -165px;
 }
 
 
